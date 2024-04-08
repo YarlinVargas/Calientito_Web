@@ -2,26 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faBuilding, faUserGroup, faGear } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth/auth.service';
-import { AuthModel } from 'src/app/core/models/auth/auth.model';
-import { GeneralService } from 'src/app/core/services/gen/general.service';
-import { ListModel } from 'src/app/core/models/general/general.model';
-import { RespService } from 'src/app/core/models/general/resp-service.model';
-import { Dialog } from '@angular/cdk/dialog';
-import { openModals } from 'src/app/core/global/modals/openModal';
-import { SpinnerService } from 'src/app/core/services/gen/spinner.service';
-import { finalize } from 'rxjs';
-import { IndexDbService } from 'src/app/core/services/gen/index-db.service';
-import { ValueSelect } from 'src/app/core/models/general/value-select.model';
+// import { AuthService } from 'src/app/core/services/auth/auth.service';
+// import { AuthModel } from 'src/app/core/models/auth/auth.model';
+// import { GeneralService } from 'src/app/core/services/gen/general.service';
+// import { ListModel } from 'src/app/core/models/general/general.model';
+// import { RespService } from 'src/app/core/models/general/resp-service.model';
+// import { Dialog } from '@angular/cdk/dialog';
+// import { openModals } from 'src/app/core/global/modals/openModal';
+// import { SpinnerService } from 'src/app/core/services/gen/spinner.service';
+// import { finalize } from 'rxjs';
+// import { IndexDbService } from 'src/app/core/services/gen/index-db.service';
+// import { ValueSelect } from 'src/app/core/models/general/value-select.model';
 import { UsuarioService } from 'src/app/core/services/usuario/usuario.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
 
   public allOptions: ValueSelect[] = [];
 

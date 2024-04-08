@@ -1,25 +1,24 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
-import { ChangePasswordComponent } from "./change-password/change-password.component";
 import { LoginComponent } from "./login/login.component";
 
 const routes: Routes = [
+
   {
-    path:'',
-    pathMatch: 'full',
-    component:LoginComponent
+    path: '',
+    pathMatch:'full',
+    title: 'Inicio de sesión',
+    component: LoginComponent
   },
   {
-    path:'login',
-    component:LoginComponent
-  },
-  {
-    path:'changePassword/:token',
-    component:LoginComponent
+    path: 'login',
+    title: 'Inicio de sesión',
+    component: LoginComponent
   },
 ];
+
 @NgModule({
-  imports:[RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class IndexRoutingModule {}
+export class IndexRoutingModule { }

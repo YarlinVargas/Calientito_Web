@@ -1,25 +1,32 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { IndexRoutingModule } from "./index-routing.module";
-import { ChangePasswordComponent } from "./change-password/change-password.component";
-import { LoginComponent } from "./login/login.component";
-import { ReactiveFormsModule } from "@angular/forms";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
+import { IndexRoutingModule } from './index-routing.module';
+import { LoginComponent } from './login/login.component';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RECAPTCHA_LANGUAGE, RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from "../../core/shared/shared.module";
 
 @NgModule({
-  declarations:[
-    LoginComponent,
-    ChangePasswordComponent
-  ],
-  imports:[
-    CommonModule,
-    IndexRoutingModule,
-  ],
-  providers:[
-    // {
-    //   provide:RECAPTCHA_LANGUAGE,
-    //   useValue: "es"
-    // }
-  ]
+    declarations: [
+        LoginComponent,
+    ],
+    providers: [
+        {
+            provide: RECAPTCHA_LANGUAGE,
+            useValue: "es", // use spanish language
+        },
+    ],
+    imports: [
+        CommonModule,
+        IndexRoutingModule,
+        FontAwesomeModule,
+        RecaptchaModule,
+        RecaptchaFormsModule,
+        ReactiveFormsModule,
+        SharedModule
+    ]
 })
-export class IndexModule {}
+export class IndexModule { }
