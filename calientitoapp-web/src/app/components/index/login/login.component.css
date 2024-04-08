@@ -1,0 +1,176 @@
+h1 {
+  font-size: 0.8em !important;
+  font-weight: bold;
+  color: var(--color-purple);
+}
+
+a {
+  margin-bottom: 1.5em !important;
+  margin-top: 0.9em !important;
+  font-size: 12px !important;
+}
+
+.UserInput {
+  margin-bottom: 3.1em;
+}
+.password{
+  color: var(--color-gray3);
+}
+.CentroATInput{
+  margin-bottom: 2.1em;
+}
+
+.mat-checkbox-layout>.mat-checkbox-label {
+  line-height: 24px;
+  font-size: 12px;
+}
+
+.logo-head{
+  margin-top: 2.5em;
+}
+
+.FormDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+
+}
+
+.conten{
+  width: 45.6%;
+  overflow: hidden;
+  margin-top: 6.3em;
+
+}
+
+
+.content-login {
+  width: 100%;
+  padding: 0em;
+  overflow: auto;
+  overflow-x: hidden;
+  font-size: 16px;
+  height: calc(100% - 3em);
+  margin-bottom: 0.5em;
+
+}
+
+.content-login::-webkit-scrollbar {
+  width: 5px !important;
+  height: 0px !important;
+  border-radius: 4px !important;
+}
+
+.content-login::-webkit-scrollbar-thumb {
+  background-color: var(--color-blue) !important;
+}
+
+.label_recordar {
+  font-size: .8em;
+  color: grey;
+}
+
+.content_recaptcha {
+  display: grid;
+  place-items: center;
+  padding-top: 2em;
+}
+
+.mat-error-recaptcha {
+  font-size: 0.8em;
+  margin: 0 !important;
+  text-align: left;
+}
+
+@media only screen and (max-width:1800px) {
+  .content-login {
+      font-size: 14px;
+  }
+}
+
+@media only screen and (max-width:1536px){
+  .content-login {
+  padding-top: 0em;
+  padding-bottom: 0em;
+  }
+}
+@media only screen and (max-width:1440px){
+  .content-login {
+  width: 100%;
+  }
+
+
+
+  .logo-head{
+      margin-top: 0em;
+  }
+}
+@media only screen and (max-width:1370px){
+  .content-login {
+      width: 100%;
+      font-size: 14.4px;
+  }
+}
+@media only screen and (max-width:1280px){
+  .content-login {
+      width: 100%;
+      font-size: 12px;
+      padding-bottom: 0;
+  }
+  .FormDiv{
+      width: 100%;
+      margin-left: -1%;
+      display: flex;
+      justify-content: center;
+  }
+  .form-login>div>button {
+      margin-top: 2.2rem;
+      margin-bottom: 3.2rem;
+      font-size: .8em;
+  }
+}
+@media only screen and (max-width:1000px){
+
+  .conten {
+      height: auto!important;
+      width: 100%;
+      font-size: 12px;
+      padding-top: 0em;
+      opacity: 0.9;
+      padding-bottom: 0;
+  }
+
+  .conten>div{
+      padding-top: 7em;
+  }
+  .logintitle {
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+  }
+  .UserInput {
+      margin-bottom: 2.1em;
+  }
+
+  .form-login>div>button {
+      margin-top: 2.2rem;
+      margin-bottom: 3.2rem;
+      font-size: .8em;
+  }
+  .conten{
+   width: 100%;
+   overflow: auto;
+   margin-top: 0em;
+  }
+
+}
+
+@media only screen and (max-width:650px){
+  .content-login {
+      width: 100%;
+      padding: 0 0;
+  }
+  .fondo{
+      align-items: center;
+  }
+}

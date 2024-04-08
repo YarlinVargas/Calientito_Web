@@ -1,0 +1,76 @@
+<div class="flex flex-col gap-8 w-full">
+  <div *ngFor="let item of dataExam; let i = index">
+    <div class="relative flex flex-col  shadow-md shadow-graySilver rounded-md h-auto w-full">
+      <div class="absolute left-0 h-full w-2 bg-sky700 rounded-lg"></div>
+
+      <div class="relative flex flex-row flex-nowrap items-center justify-between text-xs gap-4 p-4">
+        <div class="flex flex-col gap-1">
+          <div class="flex flex-row gap-1">
+            <p class="text-neutral700 font-semibold">Servicios:</p>
+            <p class="text-neutral400 font-medium">{{item.examName}}</p>
+          </div>
+          <div class="flex flex-row gap-1">
+            <p class="text-neutral700 font-semibold">Estado:</p>
+            <p class="text-neutral400 font-medium">{{item.requestStatus}}</p>
+          </div>
+        </div>
+
+        <div>
+          <app-buttons [typeBtn]="'submit'" [color]="item.open && viewDetail ? 'cyan':'sky'"  [width]="'24'" [height]="'6'" [button]="2" label="Detalle"
+          (click)="item.open && viewDetail ? detailExam(item.idPatient_Exam, 1) : detailExam(item.idPatient_Exam,2)" />
+        </div>
+
+      </div>
+    </div>
+
+    <div class="h-full py-3 px-1" *ngIf="item.open && item.idPatient_Exam == idPatient_Exam && viewDetail">
+      <div class="w-full text-center">
+        <fa-icon class="text-sky700 font-bold text-lg" [icon]="faAngleDown"></fa-icon>
+      </div>
+      <div
+        class="relative w-full h-2/4 overflow-y-auto bg-white rounded-md shadow-md shadow-graySilver border-spacing-px border-zinc200">
+        <div class="absolute top-0 h-2 w-full bg-sky700 rounded-lg"></div>
+        <div class="flex flex-col gap-2 h-full overflow-y-auto py-5 px-3">
+          <div class="flex flex-row text-xs xl:text-sm font-bold">
+            <p>Examen:</p>
+            <p class="ml-2 text-neutral500">{{dataDetail.examName}}</p>
+          </div>
+
+          <div>
+            <p class="text-xxs xl:text-xs">
+              {{dataDetail.detail}}
+            </p>
+          </div>
+
+          <div class="text-xs">
+            <div class="flex flex-row flex-wrap items-center justify-between gap-4 pb-2">
+              <p class="font-semibold">Resultados</p>
+
+              <div class="flex flex-row items-center gap-1">
+                <p class="font-semibold">Fecha de validación:</p>
+                <p>2023-12-12</p>
+              </div>
+            </div>
+
+            <div *ngFor="let item of dataDetail.result">
+              <div class="border-t-2 border-t-neutral400 flex flex-col gap-1 py-1">
+                <div class="flex flex-wrap items-center gap-1">
+                  <p class="font-semibold">Componente analizado:</p>
+                  <p>{{item.analyteName}}</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-1">
+                  <p class="font-semibold">Valor de referencia:</p>
+                  <p>{{item.referenceValue}}</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-1">
+                  <p class="font-semibold">Resultado personal:</p>
+                  <p>{{item.results}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

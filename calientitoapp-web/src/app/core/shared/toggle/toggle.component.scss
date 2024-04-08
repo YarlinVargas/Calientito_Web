@@ -1,0 +1,74 @@
+.wrap-toggle{
+  font-size: 16px;
+}
+
+.wrap-toggle2 {
+  font-size: 11px;
+}
+
+.offscreen{
+  position: absolute;
+  display: none;
+}
+
+.switch{
+  position: relative;
+  display: inline-block;
+  width: 2.375em;
+  height: 1.25em;
+  border-radius: 2.5em;
+  cursor: pointer;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);;
+}
+
+.switch::after{
+  content: '';
+  position: absolute;
+  width: 0.9375em;
+  height: 0.9375em;
+  border-radius: 1.875em;
+  background-color: var(--white);
+  left: 2px;
+  top: 12%;
+  transition: all 0.1s ease-in-out;
+}
+
+.offscreen:checked + .switch::after{
+  transform: translateX(1.125em);
+}
+
+
+.offscreen:checked + .switch:hover{
+  background-color: var(--color-ligth-green);
+}
+
+.offscreen:checked + .switch{
+  background-color: var(--color-green);
+}
+
+#iconDeactive,#iconActive{
+  position: absolute;
+  color: var(--white);
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+#iconDeactive{
+  right: 16%;
+  font-size: 0.9375em;
+}
+
+#iconActive{
+  left: 12%;
+  font-size: 0.8125em;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrap-toggle {
+    font-size: 1.1rem;
+  }
+
+  .wrap-toggle2{
+    font-size: 0.8rem;
+  }
+}

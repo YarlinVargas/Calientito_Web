@@ -1,0 +1,19 @@
+.input-ring {
+    --tw-ring-offset-width: 3px;
+  }
+
+input.hide-password {
+  animation: hideTextGray .3s ease-in-out;
+}
+
+.show-text {
+  animation: showTextGray .3s ease-in;
+}
+
+input:focus {
+  outline: none;
+}
+
+.show-text-rose {
+  animation: showTextRose .3s ease-in;
+}

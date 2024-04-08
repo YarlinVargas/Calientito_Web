@@ -1,0 +1,37 @@
+<!-- Panel modal, mostrar/ocultar según el estado del modal. -->
+<div class="relative transform rounded-lg bg-white text-left shadow-xl transition-all overflow-visible sm:my-8 ">
+  <div class=" flex justify-center h-3 rounded-tr-lg rounded-tl-lg" [ngStyle]="{backgroundColor: data.color}">
+    <img class="absolute top-[-50px] modal-image" [src]="data.img" alt="">
+  </div>
+  <div class="bg-white px-4 pb-4 lg:pt-10 sm:p-6 sm:pb-4">
+    <div class="sm:flex sm:items-start">
+      <!-- Icono del centro de la pantalla -->
+      <div class="mt-3  w-full sm:ml-4 sm:mt-0">
+        <!-- Título del modal -->
+        <h3 class="text-base text-center font-semibold leading-6 text-neutral700 mt-9 sm:mt-4 md:mt-0" id="modal-title" *ngIf="data.title">
+          {{data.title}}
+        </h3>
+        <form [formGroup]="form" class="mt-5">
+          <ng-container *ngIf="data.input.type == 'email'">
+            <app-field-input-email [parentForm]="form" [fieldName]="data.input.name" [formControlName]="data.input.name" [holder]="data.input.placeholder">
+              {{ data.input.label }}
+            </app-field-input-email>
+          </ng-container>
+          <ng-container *ngIf="data.input.type == 'password'">
+            <app-field-input [type]="data.input.type" [parentForm]="form" [fieldName]="data.input.name" [formControlName]="data.input.name" [holder]="data.input.placeholder">
+              {{ data.input.label }}
+            </app-field-input>
+          </ng-container>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Botones del modal -->
+  <div class="px-4 py-3 flex justify-center gap-x-6 sm:px-6" *ngIf="data.footer">
+    <app-buttons [label]="data.firstButton.label" (click)="acceptDialog()" [height]="'8'" [button]="2"
+      [color]="data.firstButton.color" [colorHover]="data.firstButton.hover" ></app-buttons>
+    <app-buttons *ngIf="data.secondButton" (click)="clickLogout()" [colorHover]="data.secondButton.hover"
+      [height]="'8'" [button]="2" [label]="data.secondButton.label" [color]="data.secondButton.color">
+    </app-buttons>
+  </div>
+</div>

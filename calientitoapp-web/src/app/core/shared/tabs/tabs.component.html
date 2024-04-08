@@ -1,0 +1,177 @@
+<!-- <div class="flex flex-col space-y-4 absolute items-end"> -->
+<!-- <div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}" class="bg-cover">
+    <img src="assets/img/fondoPacientes.png" alt="" />
+  </div>
+  <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}" class="w-full h-full bg-cover bg-center">
+    <img src="assets/img/fondoEmpresa.png" alt="" />
+  </div>
+  <div [ngClass]="{'hidden': openTab !== 3, 'block': openTab === 3}" class="w-full h-full bg-cover bg-center">
+    <img src="assets/img/fondoUsuarios.png" alt="" />
+  </div> -->
+<!-- <div class="flex"> -->
+<div class="w-full h-full">
+  <ul class="flex text-xs font-medium text-center 2xl:px-6 items-center justify-center">
+    <li class=" mr-2 last:mr-0 text-center">
+      <a class="w-24 text-xs font-bold h-10 p-3 shadow-lg rounded-t-lg block leading-normal" (click)="toggleTabs(1)"
+        [ngClass]="{'text-sky500 bg-white': openTab !== 1, 'text-white bg-sky500': openTab === 1}">
+        <fa-icon [icon]="faUserGroup"></fa-icon> Pacientes
+      </a>
+    </li>
+    <li class="-mb-px mr-2 last:mr-0 text-center">
+      <a class="w-24 text-xs font-bold h-10 p-3 shadow-lg rounded-t-lg block leading-normal" (click)="toggleTabs(2)"
+        [ngClass]="{'text-teal500 bg-white': openTab !== 2, 'text-white bg-teal500': openTab === 2}">
+        <fa-icon [icon]="faBuilding"></fa-icon> Empresas
+      </a>
+    </li>
+    <li class="-mb-px mr-2 last:mr-0 text-center">
+      <a class="w-24 text-xs font-bold h-10 p-3 shadow-lg rounded-t-lg block leading-normal" (click)="toggleTabs(3)"
+        [ngClass]="{'text-sky700 bg-white': openTab !== 3, 'text-white bg-sky700': openTab === 3}">
+        <fa-icon [icon]="faGear"></fa-icon> Usuarios
+      </a>
+    </li>
+  </ul>
+
+  <div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}"
+    class="relative flex flex-col break-words bg-white 2xl:max-w-md w-96 shadow-lg rounded-lg h-full">
+    <div class="p-5 rounded-t-lg bg-sky500">
+      <div class="w-96 h-full flex items-center justify-center">
+        <button class="self-center w-12 h-12 rounded-full shadow-lg bg-white">
+          <fa-icon class="text-sky500" [icon]="faUserGroup"></fa-icon>
+        </button>
+        <div class="px-10  w-72">
+          <strong class="text-white">Consulta resultados</strong>
+          <br>
+          <span class="text-white px-16 flex items-end justify-end">Pacientes</span>
+        </div>
+      </div>
+    </div>
+    <div class="pr-16 lg:pr-24 pl-16 py-5">
+      <div class="tab-content tab-space">
+        <div class="mt-10">
+          <form class="space-y-6">
+            <div>
+              <label for="small" class="block mb-2 text-sm font-medium text-sky500 dark:text-white">Tipo de
+                documento</label>
+              <select id="small"
+                class="block w-full p-2 mb-6 text-sm text-neutral400 border border-sky500 rounded-full focus:ring-sky500 focus:border-sky500 dark:bg-gneutral700 dark:border-gray-600 dark:placeholder-neutral400 dark:text-white dark:focus:ring-sky500 dark:focus:border-sky500">
+                <option selected>Seleccione una opcion</option>
+                <option value="CC">Cédula de ciudadania</option>
+                <option value="TI">Tarjeta de identidad</option>
+                <option value="CE">Cédula de extranjeria</option>
+              </select>
+            </div>
+            <div>
+              <app-field-input>Numero de documento</app-field-input>
+            </div>
+            <div>
+              <app-field-input type="password" placeholder="Contraseña">Contraseña</app-field-input>
+            </div>
+            <div class="text-sm  flex items-end justify-end">
+              <a href="#" class="font-semibold text-sky500 hover:text-sky500">Olvide mi contraseña</a>
+            </div>
+            <div>
+              <br>
+              <br>
+              <br>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="ButtonIngresar">
+        <app-buttons [typeBtn]="'submit'" [color]="'sky'" [width]="'32'" [height]="'6'" [button]="2"
+          label="Ingresar"></app-buttons>
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}"
+    class="relative flex flex-col break-words bg-white 2xl:max-w-md w-96 shadow-lg rounded-lg h-full">
+    <div class="p-5 rounded-t-lg bg-teal500">
+      <div class="w-96 h-full flex items-center justify-center">
+        <button class="self-center w-12 h-12 rounded-full shadow-lg bg-white">
+          <fa-icon class="text-teal500" [icon]="faBuilding"></fa-icon>
+        </button>
+        <div class="px-10 w-72">
+          <strong class="text-white">Consulta resultados</strong>
+          <br>
+          <span class="text-white px-16 flex items-end justify-end">Empresa</span>
+        </div>
+      </div>
+    </div>
+    <div class="pr-24 pl-16 py-5">
+      <div class="tab-content tab-space">
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form class="space-y-6">
+            <div>
+              <app-field-input color="cyan">Numero de documento</app-field-input>
+            </div>
+            <br>
+            <div>
+              <app-field-input type="password" color="cyan" placeholder="Contraseña">Contraseña</app-field-input>
+
+            </div>
+            <div class="text-sm  flex items-end justify-end">
+              <a href="#" class="font-semibold text-teal500 hover:text-teal500">Olvide mi contraseña</a>
+            </div>
+            <div>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+            <div class="ButtonIngresar">
+              <app-buttons [typeBtn]="'submit'" [color]="'cyan'" [width]="'32'" [height]="'6'" [button]="2"
+                label="Ingresar"></app-buttons>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="{'hidden': openTab !== 3, 'block': openTab === 3}"
+    class="relative flex flex-col break-words bg-white 2xl:max-w-md w-96 shadow-lg rounded-lg h-full">
+    <div class="p-5 rounded-t-lg bg-sky700">
+      <div class="w-96 h-full flex items-center justify-center">
+        <button class="self-center w-12 h-12 rounded-full shadow-lg bg-white">
+          <fa-icon class="text-sky700" [icon]="faGear"></fa-icon>
+        </button>
+        <div class="px-10 w-72">
+          <strong class="text-white">Consulta resultados</strong>
+          <br>
+          <span class="text-white px-16 flex items-end justify-end">Usuarios</span>
+        </div>
+      </div>
+    </div>
+    <div class="pr-24 pl-16 py-5">
+      <div class="tab-content tab-space">
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form class="space-y-6">
+            <div>
+              <app-field-input color="primary">Numero de documento</app-field-input>
+            </div>
+            <br>
+            <div>
+              <app-field-input type="password" color="primary" placeholder="Contraseña">Contraseña</app-field-input>
+            </div>
+            <div class="text-sm  flex items-end justify-end">
+              <a href="#" class="font-semibold text-sky700 hover:text-sky700">Olvide mi contraseña</a>
+            </div>
+            <div>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+            <div class="ButtonIngresar">
+              <app-buttons [typeBtn]="'submit'" [color]="'primary'" [width]="'32'" [height]="'6'" [button]="2"
+                label="Ingresar"></app-buttons>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </div> -->
+<!-- </div> -->
