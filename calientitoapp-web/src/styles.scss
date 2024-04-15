@@ -1,1 +1,477 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '@angular/cdk/overlay-prebuilt.css';
+
+:root {
+  --color-green: rgba(25, 183, 175, 1);
+  --color-ligth-green: rgba(21, 224, 213, 1);
+  --white: #ffffff;
+
+  --color-red: rgba(209, 62, 73, 1);
+  --color-red-70: rgba(209, 62, 73, 0.7);
+}
+
+// .Card {
+//   @apply w-48 h-64 shadow-md rounded-lg flex-none transform transition-all hover:-translate-y-4 hover:shadow-xl
+// }
+
+// .CardTitle {
+//   @apply text-3xl px-8 pt-8 pb-2 font-semibold text-white
+// }
+
+// .ButtonIngresar {
+//   @apply flex items-center justify-center space-x-4
+// }
+
+// .ButtonConsultar {
+//   @apply rounded-full text-sm font-semibold text-white font-sans w-24 h-7 bg-sky700
+// }
+
+// .ButtonConsultarHover {
+//   @apply rounded-full text-sm font-semibold text-white font-sans w-24 h-7 bg-teal-500
+// }
+
+// .Paragraphs {
+//   @apply block mb-2 text-xs text-neutral400 lg:text-sm
+// }
+
+// .InfoParagraphs {
+//   @apply block mb-2 text-xs font-semibold text-neutral700 lg:text-sm
+// }
+
+.z-last {
+  z-index: 10000 !important
+}
+
+.bounce {
+  animation: bounce 1s;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-25%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.fade-left {
+  // margin: 50px auto;
+  background-color: blue;
+  // width: 300px;
+  // font-size: 50px;
+  animation: bounce 1s;
+  // text-align: center;
+}
+
+@keyframes fade-left {
+  0% {
+    transform: translateX(-25%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.fade-right {
+  // margin: 50px auto;
+  background-color: blue;
+  // width: 300px;
+  // font-size: 50px;
+  animation: bounce 1s;
+  // text-align: center;
+}
+
+@keyframes fade-right {
+  0% {
+    transform: translateX(25%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-top {
+  animation: fade-top 1s ease-in;
+}
+
+@keyframes fade-down {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-down {
+  animation: fade-down 1s ease-in;
+}
+
+.overflow-scroll {
+  overflow-y: scroll;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #0ea5e9 transparent;
+}
+
+.overflow-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.overflow-scroll::-webkit-scrollbar-thumb {
+  background-color: #0ea5e9 ;
+  border-radius: 1rem;
+}
+
+.overflow-scroll::-webkit-scrollbar-track {
+  background-color: rgb(229 231 235 / 1);
+  border-radius: 1rem;
+}
+
+.md-overflow-scroll {
+  @media (min-width: 768px) {
+    overflow-y: auto;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #0ea5e9 transparent;
+  }
+}
+
+.md-overflow-scroll::-webkit-scrollbar {
+  @media (min-width: 768px) {
+    width: 8px;
+  }
+}
+
+.md-overflow-scroll::-webkit-scrollbar-thumb {
+  @media (min-width: 768px) {
+    background-color: #0ea5e9 ;
+    border-radius: 1rem;
+  }
+}
+
+.md-overflow-scroll::-webkit-scrollbar-track {
+  @media (min-width: 768px) {
+    background-color: rgb(229 231 235 / 1);
+    border-radius: 1rem;
+  }
+}
+
+/* Fuente general nunito */
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url(assets/fonts/OpenSans/OpenSans-Medium.ttf);
+}
+
+@font-face {
+  font-family: 'OpenSans-SemiBold';
+  src: url(assets/fonts/OpenSans/OpenSans-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: 'OpenSans-Bold';
+  src: url(assets/fonts/OpenSans/OpenSans-Bold.ttf);
+}
+
+html {
+  font-family: 'OpenSans', 'OpenSans-SemiBold', 'OpenSans-Bold' !important;
+}
+
+// Establece los estilos personalizados para la barra de desplazamiento
+.general-scroll {
+  scrollbar-width: thin; // Anchura del scrollbar en navegadores compatibles con Firefox
+  scrollbar-color: #0ea5e9 transparent; // Color del scrollbar en navegadores compatibles con Firefox
+}
+
+.general-scroll::-webkit-scrollbar {
+  width: 6px; // Anchura del scrollbar en navegadores Webkit (Chrome, Safari)
+  height: 6px !important;
+}
+
+.general-scroll::-webkit-scrollbar-thumb {
+  background-color: #0ea5e9; // Color del pulgar del scrollbar en navegadores Webkit
+  border-radius: 10px !important;
+}
+
+.general-scroll::-webkit-scrollbar-track {
+  background-color: transparent; // Color de fondo de la pista del scrollbar en navegadores Webkit
+  border-radius: 10px !important;
+}
+
+.contenido {
+  &-scroll {
+    height: 0em;
+  }
+}
+
+.footer {
+  &-business {
+    background: rgb(25,183,175);
+    background: linear-gradient(180deg, rgba(25,183,175,1) 0%, rgba(21,224,213,1) 100%);
+  }
+  &-patient {
+    background: rgb(0,160,236);
+    background: linear-gradient(180deg, rgba(0,160,236,1) 0%, rgba(46,189,255,1) 100%);
+  }
+  &-user {
+    background: rgb(0,160,236);
+    background: linear-gradient(180deg, rgba(0,160,236,1) 0%, rgba(0,110,161,1) 100%);
+  }
+}
+
+@-webkit-keyframes hideTextGray {
+  10% {
+    color: rgb(31 41 55 / 1);
+  }
+  50% {
+    color: rgb(107 114 128 / 1);
+  }
+  80% {
+    color: rgb(229 231 235 / 1);
+  }
+  100% {
+    color: transparent;
+  }
+}
+
+@-moz-keyframes hideTextGray {
+  10% {
+    color: rgb(31 41 55 / 1);
+  }
+  50% {
+    color: rgb(107 114 128 / 1);
+  }
+  80% {
+    color: rgb(229 231 235 / 1);
+  }
+  100% {
+    color: transparent;
+  }
+}
+
+@-o-keyframes hideTextGray {
+  10% {
+    color: rgb(31 41 55 / 1);
+  }
+  50% {
+    color: rgb(107 114 128 / 1);
+  }
+  80% {
+    color: rgb(229 231 235 / 1);
+  }
+  100% {
+    color: transparent;
+  }
+}
+
+@keyframes hideTextGray {
+  0% {
+    color: rgb(17 24 39 / 1);
+  }
+  10% {
+    color: rgb(31 41 55 / 1);
+  }
+  50% {
+    color: rgb(107 114 128 / 1);
+  }
+  70% {
+    color: rgb(229 231 235 / 1);
+  }
+  90% {
+    color: rgb(243 244 246 / 1);
+  }
+  100% {
+    color: transparent;
+  }
+}
+
+@-webkit-keyframes showTextGray {
+  0% {
+    color: transparent;
+  }
+  10% {
+    color: rgb(243 244 246 / 1);
+  }
+  30% {
+    color: rgb(229 231 235 / 1);
+  }
+  50% {
+    color: rgb(107 114 128 / 1);
+  }
+  90% {
+    color: rgb(31 41 55 / 1);
+  }
+  100% {
+    color: rgb(17 24 39 / 1);
+  }
+}
+
+@-moz-keyframes showTextGray {
+  0% {
+    color: transparent;
+  }
+  10% {
+    color: rgb(243 244 246 / 1);
+  }
+  30% {
+    color: rgb(229 231 235 / 1);
+  }
+  50% {
+    color: rgb(107 114 128 / 1);
+  }
+  90% {
+    color: rgb(31 41 55 / 1);
+  }
+  100% {
+    color: rgb(17 24 39 / 1);
+  }
+}
+
+@-o-keyframes showTextGray {
+  0% {
+    color: transparent;
+  }
+  10% {
+    color: rgb(243 244 246 / 1);
+  }
+  30% {
+    color: rgb(229 231 235 / 1);
+  }
+  50% {
+    color: rgb(107 114 128 / 1);
+  }
+  90% {
+    color: rgb(31 41 55 / 1);
+  }
+  100% {
+    color: rgb(17 24 39 / 1);
+  }
+}
+
+@keyframes showTextGray {
+  0% {
+    color: transparent;
+  }
+  10% {
+    color: rgb(243 244 246 / 1);
+  }
+  30% {
+    color: rgb(229 231 235 / 1);
+  }
+  50% {
+    color: rgb(107 114 128 / 1);
+  }
+  90% {
+    color: rgb(31 41 55 / 1);
+  }
+  100% {
+    color: rgb(17 24 39 / 1);
+  }
+}
+
+
+@-webkit-keyframes showTextRose {
+  0% {
+    color: transparent;
+  }
+  10% {
+    color: rgb(255 228 230 / 1);
+  }
+  30% {
+    color: rgb(254 205 211 / 1);
+  }
+  50% {
+    color: rgb(253 164 175 / 1);
+  }
+  90% {
+    color: rgb(251 113 133 / 1);
+  }
+  100% {
+    color: rgb(225 29 72 / 1);
+  }
+}
+
+@-moz-keyframes showTextRose {
+  0% {
+    color: transparent;
+  }
+  10% {
+    color: rgb(255 228 230 / 1);
+  }
+  30% {
+    color: rgb(254 205 211 / 1);
+  }
+  50% {
+    color: rgb(253 164 175 / 1);
+  }
+  90% {
+    color: rgb(251 113 133 / 1);
+  }
+  100% {
+    color: rgb(225 29 72 / 1);
+  }
+}
+
+@-o-keyframes showTextRose {
+  0% {
+    color: transparent;
+  }
+  10% {
+    color: rgb(255 228 230 / 1);
+  }
+  30% {
+    color: rgb(254 205 211 / 1);
+  }
+  50% {
+    color: rgb(253 164 175 / 1);
+  }
+  90% {
+    color: rgb(251 113 133 / 1);
+  }
+  100% {
+    color: rgb(225 29 72 / 1);
+  }
+}
+
+@keyframes showTextRose {
+  0% {
+    color: transparent;
+  }
+  10% {
+    color: rgb(255 228 230 / 1);
+  }
+  30% {
+    color: rgb(254 205 211 / 1);
+  }
+  50% {
+    color: rgb(253 164 175 / 1);
+  }
+  90% {
+    color: rgb(251 113 133 / 1);
+  }
+  100% {
+    color: rgb(225 29 72 / 1);
+  }
+}
