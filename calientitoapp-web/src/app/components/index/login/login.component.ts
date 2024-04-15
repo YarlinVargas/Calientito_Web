@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
   listDocument!: ListModel[];
 
   //IMAGEN EMPRESA
-  imgEnterprise = "";
+  imgEnterprise = "assets/img/logo_calientito.png";
   //Modal
   openModal: openModals = new openModals(this.dialog);
 

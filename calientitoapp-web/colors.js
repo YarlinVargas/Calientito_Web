@@ -7,6 +7,7 @@ export const colors = {
   skyBlue: '#6379D8',
   pearlGray: '#9EA8D0',
   yellow: '#FFB703',
+  yellow2: '#fac901',
   snow: '#F9FAFF',
   deepBlue: '#006EA1',
   lightRed: '#F25D5F',
@@ -24,5 +25,6 @@ export const colors = {
   lightTurquoise: '#15E0D5',
   paleBlue: '#D9E9F1',
   lightGreySilver: '#D1D1D1',
-  lightSkyBlue: '#D9F1FC'
+  lightSkyBlue: '#D9F1FC',
+  black:'#000000'
 }
