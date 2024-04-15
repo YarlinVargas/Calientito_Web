@@ -1,0 +1,13 @@
+.gestor-clients {
+  &-vista {
+    margin-top: -10px;
+  }
+  &-table {
+    height: calc(100% - 260px);
+  }
+  &-titulo {
+    @media screen and (max-height: 600px) {
+      padding-bottom: .75rem !important;
+    }
+  }
+}

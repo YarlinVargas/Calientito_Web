@@ -1,5 +1,5 @@
 export interface RespService {
-  ok: boolean;
-  message: string;
-  data: any;
+    ok: boolean;
+    message: string;
+    data: any;
 }

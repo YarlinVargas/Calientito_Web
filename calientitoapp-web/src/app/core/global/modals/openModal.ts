@@ -1,5 +1,5 @@
 import { Dialog } from "@angular/cdk/dialog";
-import { dataModal, imgModals } from "../../models/modals/modal-data.model";
+import { dataModal, imgModals } from "../../models/modals/moda-data.model";
 import { colors } from "../../models/general/general.model";
 import { ModalMsjComponent } from "../../shared/modals/modal-msj/modal-msj.component";
 

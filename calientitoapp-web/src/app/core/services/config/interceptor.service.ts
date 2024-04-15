@@ -2,6 +2,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Injectable } from '@angular/core';
 import { Observable, catchError, finalize, mergeMap, of, switchMap } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { SpinnerService } from '../gen/spinner.service';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 
 export class InterceptorService implements HttpInterceptor {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private spinnerSvc: SpinnerService, private router: Router) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -47,7 +48,7 @@ export class InterceptorService implements HttpInterceptor {
             return of(error);
           }),
           finalize(() => {
-            // this.spinnerSvc.hide();
+            this.spinnerSvc.hide();
           }))
     }
     else {

@@ -1,0 +1,24 @@
+<div *ngIf="fieldName!='none'"
+  [ngClass]="{
+    'wrap-toggle':size=='normal',
+    'wrap-toggle2':size=='small'
+  }"
+  [tooltip]="textTooltip" [showDelay]="0" [hideDelay]="0" placement="top">
+  <input [formControl]="formField" type="checkbox" [id]="'toogle'+identity" role="switch" class="offscreen" [checked]="active" (change)="SendChange($event)">
+  <label [for]="'toogle'+identity" class="switch bg-neutral400">
+    <fa-icon [icon]="iconCheck" *ngIf="active" id="iconActive"></fa-icon>
+    <fa-icon [icon]="iconMark" *ngIf="!active" id="iconDeactive"></fa-icon>
+  </label>
+</div>
+
+<div *ngIf="fieldName=='none'"
+  [ngClass]="{
+    'wrap-toggle':size=='normal',
+    'wrap-toggle2':size=='small'
+  }" [tooltip]="textTooltip" [showDelay]="0" [hideDelay]="0" placement="top">
+  <input (click)="onCheckboxClick($event)" type="checkbox" [id]="'toogle'+identity" role="switch" [checked]="active" class="offscreen">
+  <label [for]="'toogle'+identity" class="switch bg-neutral400">
+    <fa-icon [icon]="iconCheck" *ngIf="active" id="iconActive"></fa-icon>
+    <fa-icon [icon]="iconMark" *ngIf="!active" id="iconDeactive"></fa-icon>
+  </label>
+</div>

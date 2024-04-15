@@ -1,0 +1,71 @@
+<div #content  class="w-full h-full absolute flex flex-col p-4 md:p-2 bottom-4 overflow-scroll md:overflow-auto">
+  <div class="flex flex-col w-full max-w-full md:h-full relative bg-white py-5 lg:p-5 xl:py-6 xl:px-12">
+
+    <div class="editar-usuario-titulo w-full h-30 text-neutral700 flex items-center justify-center p-4 pt-9 md:p-4 lg:px-7 lg:pb-6 lg:pt-0">
+      <p class="font-bold text-xl xl:text-2xl animate-fade-top">
+        <ng-container *ngIf="isEdit">
+          Editar Producto
+        </ng-container>
+        <ng-container *ngIf="!isEdit">
+          Crear Producto
+        </ng-container>
+      </p>
+    </div>
+
+    <form [formGroup]="form" class="items-end grid grid-cols-1 grid-rows-7 gap-y-6 mt-4 md:mt-0 md:grid-cols-4 md:grid-rows-2 lg:gap-y-6 lg:gap-x-8 xl:gap-x-12 animate-fade-down">
+      <div>
+        <app-field-input [parentForm]="form" fieldName="descripcion" formControlName="descripcion"
+          holder="Escribir descripcion" directive="NumbersLettersDot">
+          Nombre producto
+        </app-field-input>
+      </div>
+
+      <div>
+        <app-field-input [parentForm]="form" fieldName="marca" formControlName="marca" holder="Escribir marca" directive="NumbersLettersDot">
+          Marca
+        </app-field-input>
+      </div>
+
+      <div>
+        <app-field-input [parentForm]="form" fieldName="codigo" formControlName="codigo" holder="Escribir codigo"  directive="NumbersLettersDot">
+          Codigo
+        </app-field-input>
+      </div>
+
+      <div>
+        <app-field-input [parentForm]="form" fieldName="cantidad" formControlName="cantidad" holder="Escribir cantidad" directive="Numbers">
+          Cantidad
+        </app-field-input>
+      </div>
+      <div>
+        <app-field-input [parentForm]="form" fieldName="precio_compra" formControlName="precio_compra" holder="Escribir precio compra" directive="Numbers">
+          Precio compra
+        </app-field-input>
+      </div>
+      <div>
+        <app-field-input [parentForm]="form" fieldName="precio_venta" formControlName="precio_venta" holder="Escribir precio venta" directive="Numbers">
+          Precio venta
+        </app-field-input>
+      </div>
+      <div>
+        <app-field-input [parentForm]="form" fieldName="imagen" formControlName="imagen" holder="Subir imagen">
+          Subir imagen
+        </app-field-input>
+      </div>
+
+    </form>
+
+    <hr class="w-full mt-12 md:mt-4 mb-3 border-2 border-transparent border-b-neutral500">
+
+    <div class="flex justify-center gap-x-4 mt-5 md:mt-2 items-end animate-fade-down">
+      <app-buttons [typeBtn]="'submit'" [color]="'sky'" [width]="'32'" [height]="'8'" [button]="2"
+        label="Cancelar" (click)="back()" ></app-buttons>
+      <app-buttons [typeBtn]="'submit'" [color]="'primary'" [width]="'32'" [height]="'8'" [button]="2"
+        [label]="isEdit ? 'Actualizar' : 'Crear'" (click)="updateOrCreateProduct()"></app-buttons>
+    </div>
+    <app-footer/>
+  </div>
+</div>
+
+<app-go-up [elementToTop]="content"/>
+

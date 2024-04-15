@@ -1,0 +1,74 @@
+<div class="rounded-t-lg border-t-8 border-t-sky500 h-full">
+  <div class="detalle-usuario bg-white p-3 md:p-6 rounded-b-lg h-full flex flex-col">
+    <div class="flex items-center">
+      <p class="font-semibold text-sky700 text-lg ">
+        Detalles:
+      </p>
+      <p class="ml-2 block text-sm font-semibold text-neutral700 xl:text-base">
+        {{ listDetail.name }}
+      </p>
+    </div>
+
+    <div class="detalle-usuario-info flex flex-col bg-white-300 shadow-md  rounded-2xl p-3">
+      <div class="">
+        <form class="flex flex-row">
+          <div class="w-full p-3">
+            <div class="grid grid-cols-2 gap-y-2 gap-x-2 md:grid-cols-4">
+              <div class="flex flex-col mt-3 md:mt-0">
+                <P class="Paragraphs overflow-hidden text-ellipsis"> Tipo de documento:</P>
+                <P class="InfoParagraphs overflow-hidden text-ellipsis">
+                  {{ listDetail.identificationType }}
+                </P>
+              </div>
+              <div class="">
+                <P class="Paragraphs overflow-hidden text-ellipsis"> Numero de documento:</P>
+                <P class="InfoParagraphs overflow-hidden text-ellipsis">
+                  {{ listDetail.identificationNumber }}
+                </P>
+              </div>
+              <div class="">
+                <P class="Paragraphs overflow-hidden text-ellipsis">Telefono:</P>
+                <P class="InfoParagraphs overflow-hidden text-ellipsis">
+                  {{ listDetail.telephoneNumber }}
+                </P>
+              </div>
+              <div class="">
+                <P class="Paragraphs overflow-hidden text-ellipsis">Correo electronico:</P>
+                <P class="InfoParagraphs overflow-hidden text-ellipsis">
+                  {{ listDetail.email }}
+                </P>
+              </div>
+            </div>
+
+            <div class="flex flex-col">
+              <P class="Paragraphs"> Terceros:</P>
+              <P class="InfoParagraphs">
+                {{ listDetail.companyName }}
+              </P>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="flex border-4 border-transparent border-b-neutral400 pt-3 pb-3">
+      <p class="font-semibold text-sky700 text-lg">
+        Planes asociados
+      </p>
+    </div>
+    <div class="pr-4 mt-3 overflow-y-scroll h-full">
+      <div>
+        <app-table [headers]="['Codigo', 'Plan']" [data]="listPlans" [keyMap]="{
+          'Codigo': 'code',
+          'Plan': 'name',
+        }">
+        </app-table>
+      </div>
+    </div>
+    <div class="flex justify-center mt-3">
+      <button *ngIf="data.footer"  class="bg-sky700 w-24 h-7 rounded-md text-white flex justify-center" (click)="primaryEvent.emit()">
+        {{ data.firstButton.label }}
+      </button>
+    </div>
+  </div>  
+</div>

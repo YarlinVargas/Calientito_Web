@@ -1,0 +1,24 @@
+<div>
+  <label class="block text-sm font-medium leading-6 pl-3"
+  [class]="formFiled.invalid && (formFiled.dirty || formFiled.touched) ?
+    'text-rose600' :
+      (formFiled.valid && (formFiled.value!='' && formFiled.value!=null && formFiled.value!=undefined)) ?
+        'text-sky500 hover:text-cyan500' :
+        'text-sky500 hover:text-cyan500'"
+  >
+      <ng-content></ng-content>
+  </label>
+  <div class="relative mt-1 rounded-md shadow-sm">
+    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+    </div>
+    <div class="relative">
+      <input type="text" [value]="formFieldValue" (input)="Change($event)" 
+        [class]="formFiled.invalid && (formFiled.dirty || formFiled.touched)?'ring-rose600':(formFiled.valid && (formFiled.value!='' && formFiled.value!=null && formFiled.value!=undefined))?'ring-sky500 hover:ring-sky700 hover:input-ring':'ring-sky500 hover:ring-sky700 hover:input-ring'"
+        class=" block w-full rounded-3xl border-0 border- py-1.5 pl-4 pr-11 text-neutral700 ring-1 ring-inset placeholder:text-neutral400 focus:ring-2 focus:ring-inset sm:text-sm leading-tight h-10 "
+        [placeholder]="holder">
+    </div>
+    <div class="text-rose600 text-xs ml-3 fixed" *ngIf="formFiled.invalid && (formFiled.dirty || formFiled.touched)" >
+      {{ fieldError.getFormFieldError(parentForm, fieldName) }}
+    </div>
+  </div>
+</div>

@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
-import { dataModal } from 'src/app/core/models/modals/modal-data.model';
+import { dataModal } from 'src/app/core/models/modals/moda-data.model';
 
 @Component({
   selector: 'app-modal-msj',
   templateUrl: './modal-msj.component.html',
-  styleUrls: ['./modal-msj.component.scss']
+  styleUrls: ['./modal-msj.component.scss'],
 })
 export class ModalMsjComponent {
 

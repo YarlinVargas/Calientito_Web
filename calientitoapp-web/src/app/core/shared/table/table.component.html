@@ -1,0 +1,200 @@
+<div class="overflow-x-auto general-scroll">
+  <table class="border-spacing-y-2 border-separate min-w-full" [ngStyle]="{'width': maxWidthTable}"
+    [ngClass]="{ 'm-auto': positionTable === 'center' }">
+    <thead>
+      <tr class="shadow-md bg-paleBlue">
+        <div class="rounded-l-lg h-13 bg-paleBlue w-4 "></div>
+        <ng-container *ngFor="let header of headers; let i = index" >
+          <ng-container *ngIf="!header.includes('Check')">
+            <ng-container *ngIf="header.includes('Estado')">
+              <th
+                class="px-1 py-2.5 hidden xl:table-cell"
+                [class.rounded-r-lg]="i === headers.length - 1" [class.rounded-l-lg]="i==-1"
+                [ngClass]="{'sticky right-0 z-10 bg-paleBlue max-xl:border-l-[1.5rem] max-xl:border-white': header.includes('Accion'), 'max-xl:rounded-r-lg':!header.includes('Accion')}">
+                {{header}}
+              </th>
+            </ng-container>
+            <ng-container *ngIf="!header.includes('Estado')">
+              <th
+                class="px-1 py-2.5"
+                [class.rounded-r-lg]="i === headers.length - 1" [class.rounded-l-lg]="i==-1"
+                [ngClass]="{'sticky right-0 z-10 bg-paleBlue max-xl:border-l-[1.5rem] max-xl:border-white': header.includes('Accion'), 'max-xl:rounded-r-lg':!header.includes('Accion')}">
+                {{header}}
+              </th>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="header.includes('Check')">
+            <th class="px-1 py-2.5"
+              [class.rounded-r-lg]="i === headers.length - 1" [class.rounded-l-lg]="i==-1"
+              [ngClass]="{'sticky right-0 z-10 bg-paleBlue max-xl:border-l-[1.5rem] max-xl:border-white': header.includes('Accion'), 'max-xl:rounded-r-lg':!header.includes('Accion')}">
+              <input type="checkbox" id="checkbox-all"
+                class="w-4 h-4 rounded remember-me form-checkbox"
+                (click)="selectCheckbox()">
+            </th>
+          </ng-container>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border-black shadow-md bg-white" *ngFor="let row of data; let idx = index">
+        <div class="rounded-l-lg  lg:h-21 xl:h-17 w-4 "
+        [ngClass]="row[keyMap['Estado']]=='Finalizados' ?'bg-teal500 hover:bg-sky-300': row[keyMap['Estado']]=='Resultados parciales'?'bg-orange500 hover:bg-amber500': row[keyMap['Estado']]=='En espera de resultados'? 'bg-neutral500 hover:bg-zinc200':row[keyMap['Estado']]=='Con resultado'? 'bg-sky700 hover:bg-sky-300':''">
+        </div>
+        <ng-container *ngFor="let header of headers; let i = index">
+          <ng-container *ngIf="!allowHeaders.includes(header); else actionsColumn">
+            <td class="text-center px-1 py-2.5 max-w-[20em] truncate" [class.rounded-r-lg]="i === headers.length - 1"
+              [class.rounded-l-lg]="i === 0"
+              [ngClass]="{'sticky right-0 z-10 bg-white max-xl:border-l-[1.5rem] max-xl:border-white': header.includes('Accion')}">
+              <ng-container *ngIf="quantityShortText">
+                <ng-container *ngIf="tooltipOptions.enable">
+                  <ng-container *ngIf="row[keyMap[header]]?.length > quantityShortText; else onlyText">
+                    <span [tooltip]="row[keyMap[header]]" [options]="tooltipOptions">
+                      {{ row[keyMap[header]] | shortText: quantityShortText }}
+                    </span>
+                  </ng-container>
+                  <ng-template #onlyText>
+                    {{ row[keyMap[header]] | shortText: quantityShortText }}
+                  </ng-template>
+                </ng-container>
+                <ng-container *ngIf="!tooltipOptions.enable">
+                  {{ row[keyMap[header]] | shortText: quantityShortText }}
+                </ng-container>
+              </ng-container>
+              <ng-container *ngIf="!quantityShortText">
+                {{ row[keyMap[header]] }}
+              </ng-container>
+            </td>
+          </ng-container>
+
+          <ng-template #actionsColumn>
+            <ng-container *ngIf="header.includes('Estado')">
+              <td class="text-center px-1 py-2.5 max-w-[20em] truncate hidden xl:table-cell" [class.rounded-r-lg]="i === headers.length - 1"
+                [class.rounded-l-lg]="i === 0"
+                [ngClass]="{'sticky right-0 z-10 bg-white max-xl:border-l-[1.5rem] max-xl:border-white': header.includes('Accion')}">
+                <ng-container [ngSwitch]="header">
+                  <ng-container *ngSwitchCase="'Estado en espera de resultados'">
+                    <app-toggle [identity]="idx.toString() + '_waitingResult'" [active]="row[keyMap[header]]"
+                      (getValue)="changeHeader($event, idx, 'waitingResult')"></app-toggle>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'Estado resultado parcial'">
+                    <app-toggle [identity]="idx.toString() + '_partialResult'" [active]="row[keyMap[header]]"
+                      (getValue)="changeHeader($event, idx, 'partialResult')"></app-toggle>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'Estado finalizado'">
+                    <app-toggle [identity]="idx.toString() + '_finishedResult'" [active]="row[keyMap[header]]"
+                      (getValue)="changeHeader($event, idx, 'finishedResult')"></app-toggle>
+                  </ng-container>
+                </ng-container>
+              </td>
+            </ng-container>
+            <ng-container *ngIf="!header.includes('Estado')">
+              <td class="text-center px-1 py-2.5 max-w-[20em] truncate" [class.rounded-r-lg]="i === headers.length - 1"
+                [class.rounded-l-lg]="i === 0"
+                [ngClass]="{'sticky right-0 z-10 bg-white max-xl:border-l-[1.5rem] max-xl:border-white': header.includes('Accion')}">
+                <ng-container [ngSwitch]="header">
+                  <ng-container *ngSwitchCase="'Check'">
+                    <input type="checkbox" id="checkbox-{{i}}" [checked]="row['selected']"
+                      class="w-4 h-4 rounded remember-me form-checkbox"
+                      (click)="resultCheck.emit([false, row['id']])">
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'Resultados'">
+                    <div *ngIf=" listaEmitir === 'detalleResultado'">
+                      <p *ngIf="row[keyMap['Estado']] == 'En espera de resultados'">
+                        -
+                      </p>
+                      <div *ngIf="!row['changeButton'] && activeButtonIndex !== idx || seePdf">
+                        <app-buttons [typeBtn]="'submit'" [color]="'primary'" [button]="1" label="Consultar"
+                          *ngIf="row[keyMap['Estado']] != 'En espera de resultados' "
+                          (click)="toggleButton(idx,row,1); result.emit(row[keyMap['IdExam']])">
+                        </app-buttons>
+                      </div>
+                      <div *ngIf="row['changeButton'] || activeButtonIndex === idx && !seePdf ">
+                        <button class="ButtonConsultarHover" type="submit"
+                          *ngIf="row[keyMap['Estado']] != 'En espera de resultados'  "
+                          (click)="toggleButton(idx,row,2); result.emit(2);" [class.active]="activeButtonIndex === idx">
+                          <div class="flex items-center justify-center">
+                            <p>Consultar</p>
+                            <div class="w-2 h-5 mr-1 border-2 border-transparent border-r-white"></div>
+                            <fa-icon [icon]="iconChevronRight"></fa-icon>
+                            <!-- <fa-icon [icon]="iconChevronLeft"></fa-icon> -->
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+
+                    <fa-icon *ngIf=" listaEmitir === 'listPaciente'" [icon]="iconChevronRight"
+                      (click)="emitOutputsPatient(row[keyMap[idOut]], row, 'Resultados')"
+                      class=" text-white px-1.5 pt-1 pb-1.5 rounded cursor-pointer text-sm "
+                      [ngClass]="row[keyMap['Estado']]=='Finalizados' ?
+                        'bg-sky500 hover:bg-sky-300' :
+                        row[keyMap['Estado']] == 'Resultado parcial' ?
+                          'bg-orange500 hover:bg-orange-300' :
+                          row[keyMap['Estado']]=='En espera de resultados' ?
+                            'bg-neutral500 hover:bg-neutral-300' :
+                            row[keyMap['Estado']]=='Con resultado' ?
+                              'bg-sky700 hover:bg-sky-300' : 'bg-orange500 hover:bg-orange-300'">
+                    </fa-icon>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'Editar'">
+                    <ng-container *ngIf="row[keyMap['Activo']] == null; else validateAction">
+                      <ng-container *ngTemplateOutlet="editActive"></ng-container>
+                    </ng-container>
+
+                    <ng-template #validateAction>
+                      <ng-container *ngIf="row[keyMap['Activo']]">
+                        <ng-container *ngTemplateOutlet="editActive"></ng-container>
+                      </ng-container>
+                      <ng-container *ngIf="!row[keyMap['Activo']]">
+                        <fa-icon [icon]="iconEdit" class="bg-neutral400 text-white px-1.5 pt-1 pb-1.5 rounded text-sm">
+                        </fa-icon>
+                      </ng-container>
+                    </ng-template>
+
+                    <ng-template #editActive>
+                      <fa-icon [icon]="iconEdit" (click)="emitOutputs(row[keyMap[idOut]], 'Editar')"
+                        class="bg-blue-500 text-white px-1.5 pt-1 pb-1.5 rounded cursor-pointer text-sm hover:bg-blue-300">
+                      </fa-icon>
+                    </ng-template>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'Detalles'">
+                    <fa-icon [icon]="iconDetails" (click)="emitOutputs(row[keyMap[idOut]], 'Detalles')"
+                      class="bg-indigo600 text-white px-1.5 pt-1 pb-1.5 rounded cursor-pointer text-sm hover:bg-lavenderBlue">
+                    </fa-icon>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'DetalleProducto'">
+                    <fa-icon [icon]="iconDetails" (click)="emitOutputs(row[keyMap[idOut]], 'DetalleProducto')"
+                      class="bg-indigo600 text-white px-1.5 pt-1 pb-1.5 rounded cursor-pointer text-sm hover:bg-lavenderBlue">
+                    </fa-icon>
+                  </ng-container>
+                  <!-- <ng-container *ngSwitchCase="'Activo'">
+                    <app-toggle [identity]="idx.toString()" [active]="row[keyMap[header]]"
+                      (getValue)="changeStatus($event, idx)"></app-toggle>
+                  </ng-container> -->
+                  <ng-container *ngSwitchCase="'Acciones'" >
+                    <app-actions-table
+                      [actions]="row['actions']"
+                      (result)="resultAction.emit([$event, row['id'], row['requestNumber'],row['requestStatus']])"
+                      (click)="changeSelectedAction(idx)"
+                      [isMenuOpen]="idx === openIdAction"
+                    />
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'Eliminar'">
+                    <fa-icon [icon]="iconDelete" (click)="emitOutputs(row[keyMap[idOut]], 'Eliminar')"
+                      class="bg-red-500 text-white px-1.5 pt-1 pb-1.5 rounded cursor-pointer text-base hover:bg-red-300">
+                    </fa-icon>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'Desasociar'">
+                    <fa-icon [icon]="iconLink"
+                      class="bg-amber-500 hover:bg-amber-400 text-white px-1.5 pt-1 pb-1.5 rounded cursor-pointer text-base"
+                      (click)="result.emit(row[idOut])">
+                    </fa-icon>
+                  </ng-container>
+                </ng-container>
+              </td>
+            </ng-container>
+          </ng-template>
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+</div>

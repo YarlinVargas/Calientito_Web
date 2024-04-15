@@ -10,10 +10,10 @@ import {
   faDownload,
   faEnvelope,
   faPlus,
- faLink
+  faLink
 } from '@fortawesome/free-solid-svg-icons';
 import { ModalMsjComponent } from '../modals/modal-msj/modal-msj.component';
-import { dataModal, imgModals } from '../../models/modals/modal-data.model';
+import { dataModal, imgModals } from '../../models/modals/moda-data.model';
 import { colors } from '../../models/general/general.model';
 import { openModals } from '../../global/modals/openModal';
 import { Router } from '@angular/router';
@@ -25,7 +25,6 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrls: ['./buttons.component.scss']
 })
 export class ButtonsComponent {
-
   @Input() typeBtn: 'button' | 'reset' | 'submit' = 'button';
   @Input() color: 'sky700' | 'sky' | 'primary' | 'cyan' | 'azul' | 'teal' | 'borderCyan' | 'borderRed' | 'indigo' | 'indigoClean' | 'red' | 'amber' | 'amber400' | 'neutral' = 'primary';
   @Input()
@@ -145,5 +144,4 @@ export class ButtonsComponent {
     });
   }
 }
-
 

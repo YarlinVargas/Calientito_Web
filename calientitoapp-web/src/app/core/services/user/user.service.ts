@@ -1,56 +1,38 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
-export interface Usuario {
-  id_usuario: number;
-  cedula: number;
-  nombres:string;
-  apellidos: string;
-  celular:string;
-  correo: string;
-  direccion: string;
-  id_tipo_documento: number;
-  id_perfil:number;
-  id_estado:number;
-  login:string;
-  password:string;
-  eliminado: number;
-}
+import { RespService } from '../../models/general/resp-service.model';
+import { ConfigService } from '../config/config.service';
+import { CreateUpdateUser } from './models/create-update-user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private readonly apiUrl = 'http://localhost:3000/api';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private config: ConfigService) { }
 
-  getUsuarios(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(`${this.apiUrl}/usuarios`);
+  public GetDetails(id: number): Observable<any> {
+    return this.http.get<RespService>(`${this.config.base}user/detail/${id}`);
   }
 
-  getUsuarioById(id: number): Observable<Usuario> {
-    return this.http.get<Usuario>(`${this.apiUrl}/usuarios/${id}`);
+  public GetUser(id: string): Observable<any> {
+    return this.http.get<RespService>(`${this.config.base}user/${id}`);
   }
 
-  createNewUsuario(usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(`${this.apiUrl}/usuarios`, usuario);
+  public CreateOrUpate(user: CreateUpdateUser): Observable<any> {
+    return this.http.post<RespService>(`${this.config.base}user/createUpdate`, user);
   }
 
-  updateUsuarioById(id: number, usuario: Usuario): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/usuarios/${id}`, usuario);
+  public Consult(): Observable<any> {
+    return this.http.get<RespService>(`${this.config.base}user/consult`);
   }
 
-  deleteUsuarioById(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/usuarios/${id}`);
+  public ActiveOrDeactive(idUser: number): Observable<any> {
+    return this.http.put<RespService>(`${this.config.base}user/ActivateDeactivate`, { id: idUser });
   }
 
-  authenticateUsuario(login: string,password:string): Observable<Usuario> {
-    const body = {
-      login: login,
-      password: password
-    };
-    return this.http.post<Usuario>(`${this.apiUrl}/authenticate`, body);
+  public Delete(idUser: number): Observable<any> {
+    return this.http.delete<RespService>(`${this.config.base}user`, { body: { id: idUser } });
   }
 }

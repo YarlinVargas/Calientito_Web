@@ -7,9 +7,10 @@ import { timer } from 'rxjs';
 @Component({
   selector: 'app-field-input',
   templateUrl: './field-input.component.html',
-  styleUrls: ['./field-input.component.scss']
+  styleUrls: ['./field-input.component.scss'],
+  providers:[{provide:NG_VALUE_ACCESSOR, useExisting: FieldInputComponent, multi:true}]
 })
-export class FieldInputComponent {
+export class FieldInputComponent implements ControlValueAccessor {
 
   @Input() holder:string='';
   @Input()
@@ -129,4 +130,3 @@ export class FieldInputComponent {
   }
 
 }
-

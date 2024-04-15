@@ -1,0 +1,244 @@
+<div class="w-full h-full absolute flex flex-col p-4 md:p-2 bottom-4 overflow-scroll md:overflow-auto">
+<div class="flex flex-col w-full max-w-full md:h-full relative bg-white py-5 lg:p-5 xl:py-6 xl:px-12">
+  <div class="detalle-resultado-header w-full pb-5">
+    <div class="w-full flex flex-wrap flex-row justify-between gap-4 lg:flex-nowrap">
+      <div class="transition-transform ease-in-out duration-500"
+        [ngClass]="{'translate-x-0': isAnimating, '-translate-x-[50%]': !isAnimating}">
+        <app-buttons [typeBtn]="'submit'" [color]="'borderRed'" [button]="3" label="Pag. anterior"
+          routerLink="{{flag==1?'/patientResult':'/listcompanyResult'}}">
+        </app-buttons>
+      </div>
+
+      <div class="transition-transform ease-in-out duration-500 flex flex-row justify-end"
+        [ngClass]="{'translate-x-0': isAnimating, 'translate-x-[50%]': !isAnimating}">
+        <app-buttons [typeBtn]="'submit'" [color]="'borderCyan'" [button]="4" label="Cambiar contraseña"
+          routerLink="/perfil">
+        </app-buttons>
+        <app-buttons [typeBtn]="'submit'" [color]="'borderCyan'" [button]="5" label="Cerrar sesión">
+        </app-buttons>
+      </div>
+    </div>
+
+    <div
+      class="detalle-resultado-title transition-transform ease-in-out duration-500 w-full h-30 text-neutral700 flex items-center justify-center"
+      [ngClass]="{'translate-y-0': isAnimating, '-translate-y-[50%]': !isAnimating}">
+      <p class="font-bold text-xl xl:text-2xl">Resultados</p>
+    </div>
+
+    <div class="detalle-resultado-paciente px-3 transition-transform ease-in-out duration-500 relative flex flex-wrap flex-col items-center w-full gap-2 break-words bg-white shadow-md shadow-graySilver rounded-xl h-auto
+      lg:flex-nowrap lg:flex-row lg:h-auto lg:gap-4"
+      [ngClass]="{'translate-y-0': isAnimating, '-translate-y-[50%]': !isAnimating, hidden:maximize}">
+      <div class="flex items-center justify-center h-full xl:w-[12%]">
+        <fa-icon class="text-sky700 fa-2xl" [icon]="faIdCard"></fa-icon>
+        <label class="block ml-3 text-xxs text-center font-semibold text-neutral700 xl:text-base">Datos
+          personales</label>
+      </div>
+
+      <div *ngIf="flag==2"
+        class="absolute bottom-0 w-full bg-sky-800 py-0.5 rounded-b-xl text-center
+        lg:w-auto lg:h-auto lg:rounded-bl-xl lg:rounded-tr-xl lg:rounded-b-none lg:top-0 lg:right-0 lg:px-10 lg:bottom-auto">
+        <p class="text-xs text-white font-medium xl:text-base">Plan: {{contract}}</p>
+      </div>
+
+      <div class="h-px w-3/4 bg-sky-800 rounded-lg lg:h-3/4 lg:w-px xl:mr-8"></div>
+
+      <div class="grid grid-cols-1 justify-items-center items-center w-[75%] lg:w-[80%]">
+        <div>
+          <p class="block mb-2 text-xxs text-center font-semibold text-neutral700 xl:text-base">
+            {{dataPatient?.patientName + ' ' + dataPatient?.identificationNumber}}</p>
+        </div>
+        <div class="detalle-resultado-view flex flex-wrap gap-x-5 w-full sm:justify-normal xl:justify-between">
+          <div>
+            <p class="block mb-2 text-xxs font-medium text-neutral400 xl:text-sm">
+              Fecha de nacimiento:</p>
+            <p class="block mb-2 text-xxs font-medium text-neutral700 xl:text-sm">
+              {{dataPatient?.birthDate}}
+            </p>
+          </div>
+
+          <div>
+            <p class="block mb-2 text-xxs font-medium text-neutral400 xl:text-sm">
+              Edad:</p>
+            <p class="block mb-2 text-xxs font-medium text-neutral700 xl:text-sm">
+              {{edad}}
+            </p>
+          </div>
+
+          <div>
+            <p class="block mb-2 text-xxs font-medium text-neutral400 xl:text-sm">
+              Sexo Biológico:</p>
+            <p class="block mb-2 text-xxs font-medium text-neutral700 xl:text-sm">
+              {{dataPatient?.biologicalSex}}</p>
+          </div>
+
+          <div>
+            <p class="block mb-2 text-xxs font-medium text-neutral400 xl:text-sm">
+              EPS:</p>
+            <p class="block mb-2 text-xxs font-medium text-neutral700 xl:text-sm">
+              {{dataPatient?.companyName}}
+            </p>
+          </div>
+
+          <div>
+            <p class="block mb-2 text-xxs font-medium text-neutral400 xl:text-sm">
+              Categoria:</p>
+            <p class="block mb-2 text-xxs font-medium text-neutral700 xl:text-sm">
+              {{dataPatient?.affiliationCategory}}</p>
+          </div>
+
+          <div>
+            <p class="block mb-2 text-xxs font-medium text-neutral400 xl:text-sm">
+              Teléfono:</p>
+            <p class="block mb-2 text-xxs font-medium text-neutral700 xl:text-sm">
+              {{dataPatient?.telephoneNumber}}</p>
+          </div>
+
+          <div>
+            <p class="block mb-2 text-xxs font-medium text-neutral400 xl:text-sm">
+              Correo electrónico:</p>
+            <p class="block mb-2 text-xxs font-medium text-neutral700 xl:text-sm">
+              {{dataPatient?.email}}</p>
+          </div>
+
+          <div>
+            <p class="block mb-2 text-xxs font-medium text-neutral400 xl:text-sm">
+              Dirección:</p>
+            <p class="block mb-2 text-xxs font-medium text-neutral700 xl:text-sm">
+              {{dataPatient?.address}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full h-full flex flex-wrap flex-row lg:flex-nowrap overflow-y-scroll ">
+    <div class="detalle-resultado-left w-full flex flex-col overflow-y-auto lg:w-[50%]">
+      <!--CARD SOLICITUD-->
+      <div
+        class="relative w-full flex flex-col items-center gap-2 p-5 break-words bg-white shadow-md shadow-graySilver rounded-lg"
+        [ngClass]="{hidden: !maximize}">
+        <div class="flex items-center justify-center h-full">
+          <fa-icon class="text-sky700" [icon]="faIdCard"></fa-icon>
+          <label class="block ml-3 text-xxs text-center font-semibold text-neutral700 xl:text-base">Datos
+            personales</label>
+        </div>
+
+        <div *ngIf="flag==2" class="absolute w-full h-auto bg-sky-800 w-h bottom-0 rounded-b-xl text-center">
+          <p class="text-xs text-white font-medium xl:text-base">Plan: {{contract}}</p>
+        </div>
+
+        <div>
+          <p class="block mb-2 text-xxs text-center font-semibold text-neutral700 xl:text-base">
+            {{dataPatient?.patientName + ' ' + dataPatient?.identificationNumber}}</p>
+        </div>
+      </div>
+
+      <div class="detalle-resultado-solicitud gap-2 transition-transform ease-in-out duration-500 flex flex-row flex-wrap justify-between break-words bg-white shadow-md shadow-graySilver rounded-t-lg
+          xl:flex-row"
+        [ngClass]="{'translate-x-0': isAnimating, '-translate-x-[50%]': !isAnimating , 'border-2 xl:border-4 border-teal-500 ':checkViewDocument}">
+        <div class="flex items-center justify-start gap-2">
+          <fa-icon class="text-sky700 fa-2xl" [icon]="faFileLines"></fa-icon>
+          <p class="font-semibold text-neutral700 text-xs lg:text-sm xl:text-lg">Solicitud:</p>
+          <p class="text-xs lg:text-sm xl:text-lg">{{requestNumber}}</p>
+        </div>
+        <div *ngIf="requestStatus != 'En espera de resultados'">
+          <app-buttons [typeBtn]="'submit'" [color]="checkViewDocument ? 'teal':'azul'" [button]="9"
+            label="Vista previa PDF" (click)="checkViewDocument ? viewDocument(false) : viewDocument(true)"
+            class="xl:flex xl:justify-end">
+          </app-buttons>
+        </div>
+      </div>
+
+      <div class="flex flex-col break-words h-full overflow-auto general-scroll">
+        <div class="w-full text-sm">
+          <div class="w-full hidden lg:block">
+            <app-table [headers]="['Servicios', 'Estado', 'Resultados']" [data]="listExams"
+              [keyMap]="{'Servicios': 'examName', 'Estado': 'requestStatus' }" (ouputId)="detailExam($event)"
+              listaEmitir="detalleResultado"
+              [viewPDF]="checkViewDocument"
+              >
+            </app-table>
+          </div>
+
+          <div class="w-full block lg:hidden">
+            <app-card-exam [dataExam]="listExams"></app-card-exam>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hidden lg:block lg:w-10 lg:h-full xl:w-12 ">
+      <fa-icon [icon]="faChevronRight" class="text-teal-500 flex items-center pt-4 fa-3x justify-center"
+        [ngClass]="{'block': checkViewDocument, 'hidden': !checkViewDocument, 'pt-40':maximize,'pt-4':!maximize}"></fa-icon>
+    </div>
+
+    <div class="hidden h-full transition-max-h ease-in-out duration-500 lg:w-[50%] lg:block"
+      [ngClass]="{'lg:w-full': maximize}">
+      <div
+        class="transition-transform ease-in-out duration-500 flex flex-col break-words bg-white shadow-md shadow-graySilver rounded-lg w-full h-full relative border"
+        [ngClass]="{'translate-x-0': isAnimating && !maximize, 'translate-x-[50%]': !isAnimating && !maximize}">
+        <div *ngIf="!checkViewDocument && !checkViewDetail" class="w-full h-full flex items-center justify-center">
+          <img src="assets/icons/icono_gray_camposCreados.png" alt="" />
+        </div>
+
+        <div *ngIf="checkViewDocument || checkViewDetail" class="absolute top-2 right-2 z-40 cursor-pointer">
+          <fa-icon class="text-sky700 text-xl" [icon]="maximize ? faMinimize : faMaximize"
+            (click)="maximize=!maximize"></fa-icon>
+        </div>
+
+        <!-- Visualizar PDF -->
+        <div *ngIf="checkViewDocument" class="detalle-resultado-pdf flex flex-col relative w-full h-full">
+          <div class="detalle-resultado-pdfbuttons flex flex-row gap-5 items-center justify-center w-full" *ngIf="requestStatus != 'En espera de resultados'">
+            <app-buttons [typeBtn]="'submit'" [color]="'sky'" [button]="10" label="Descargar" (click)="Dowload()">
+            </app-buttons>
+            <app-buttons [typeBtn]="'submit'" [color]="'primary'" [button]="11" label="Enviar al correo"
+              (click)="EmailToSend()">
+            </app-buttons>
+          </div>
+
+          <div class="mt-2" style="width: 100%; overflow: auto; height: 90%;">
+            <iframe style="width: 100%; height: 100%;" [src]="pdfb64 | safe"></iframe>
+          </div>
+        </div>
+
+        <div *ngIf="checkViewDetail || checkViewDocument" class="absolute left-0 h-full w-2  rounded-lg"
+          [ngClass]="{'bg-teal-500': checkViewDocument, 'bg-sky-600': checkViewDetail}"></div>
+
+        <!-- Visualizar Detalle -->
+        <div *ngIf="checkViewDetail" [ngClass]="{'hidden': checkViewDocument, 'block': !checkViewDocument}"
+          class="relative w-full h-full flex flex-nowrap flex-row gap-2 p-6">
+          <div class="flex flex-col gap-2 h-full w-full overflow-y-auto general-scroll">
+            <div class="flex flex-row text-xs xl:text-sm font-bold">
+              <p>Examen:</p>
+              <p class="ml-2 text-neutral500">{{listResult.examName}}</p>
+            </div>
+
+            <!-- <div>
+                <p class="text-xxs xl:text-xs">
+                  El hemograma es un análisis de sangre en el que se mide en
+                  global y en porcentajes los tres tipos básicos de células
+                  que contiene la sangre, las denominadas tres series
+                  celulares sanguineás: Blanca, roja y plaquetaria. Cada una
+                  de esas series tiene unas funciones determinadas, y estas
+                  funciones se verán perturbadas si existe alguna alteración
+                  en la cantidad o características de las células que las
+                  componen.
+                </p>
+              </div> -->
+
+            <div>
+              <app-table [headers]="['Componente analizado', 'Valor de referencia', 'Resultado personal']"
+                [data]="listResult.result"
+                [keyMap]="{'Componente analizado': 'analyteName', 'Valor de referencia': 'referenceValue', 'Resultado personal': 'results' }"
+                (result)="detailExam($event)">
+              </app-table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-footer/>
+</div>
+</div>

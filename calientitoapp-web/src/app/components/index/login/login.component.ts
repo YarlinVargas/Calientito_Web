@@ -9,15 +9,19 @@ import { ListModel } from 'src/app/core/models/general/general.model';
 import { RespService } from 'src/app/core/models/general/resp-service.model';
 import { Dialog } from '@angular/cdk/dialog';
 import { openModals } from 'src/app/core/global/modals/openModal';
+import { SpinnerService } from 'src/app/core/services/gen/spinner.service';
+import { finalize } from 'rxjs';
+import { IndexDbService } from 'src/app/core/services/gen/index-db.service';
 import { ValueSelect } from 'src/app/core/models/general/value-select.model';
-import { UserService } from 'src/app/core/services/user/user.service';
+import { UsuarioService } from 'src/app/core/services/usuario/usuario.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+
   public allOptions: ValueSelect[] = [];
 
   // # TABS
@@ -55,7 +59,9 @@ export class LoginComponent {
     private authSvc: AuthService,
     private genSvc: GeneralService,
     public dialog: Dialog,
-    private _usuarioService: UserService
+    private spinnerSvc: SpinnerService,
+    private indexDbService: IndexDbService,
+    private _usuarioService: UsuarioService
   ) {
     this.initialForm();
     if (localStorage.getItem('remember') !=null) {
@@ -92,7 +98,20 @@ export class LoginComponent {
     //this.ListFiltersConsult();
   }
 
-
+  private ListFiltersConsult() {
+    this.spinnerSvc.show();
+    this.genSvc.ListFiltersConsult()
+      .pipe(
+        finalize(() => {
+          this.spinnerSvc.hide();
+        })
+      )
+      .subscribe((resp: RespService[]) => {
+        this.indexDbService.addImage(resp[0].data);
+        this.imgEnterprise =resp[0].data;
+        this.listDocument = resp[1].data;
+      })
+  }
 
   private initialForm() {
     this.form = this.fb.group({

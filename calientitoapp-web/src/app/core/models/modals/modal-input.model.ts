@@ -1,5 +1,5 @@
-import { colors } from "../general/general.model";
-import { imgModals, infoBtnModal } from "./modal-data.model";
+﻿import { colors } from "../general/general.model";
+import { imgModals, infoBtnModal } from "./moda-data.model";
 
 export interface ModalInput {
   img: imgModals;

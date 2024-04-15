@@ -1,0 +1,71 @@
+<div class="rounded-t-lg border-t-8 border-t-sky500 h-full">
+  <div class="detalle-usuario bg-white p-3 md:p-6 rounded-b-lg h-full flex flex-col">
+    <div class="flex items-center">
+      <p class="font-semibold text-sky700 text-lg ">
+        Detalle producto:
+      </p>
+      <p class="ml-2 block text-sm font-semibold text-neutral700 xl:text-base">
+        {{ id_producto }}
+      </p>
+    </div>
+
+    <div class="detalle-usuario-info flex flex-col bg-white-300 shadow-md  rounded-2xl p-3">
+      <div class="">
+        <form class="flex flex-row">
+          <div class="w-full p-3">
+            <div class="grid grid-cols-2 gap-y-2 gap-x-2 md:grid-cols-4">
+              <div class="flex flex-col mt-3 md:mt-0">
+                <P class="Paragraphs overflow-hidden text-ellipsis"> Descripcion:</P>
+                <P class="InfoParagraphs overflow-hidden text-ellipsis">
+                  {{ descripcion }}
+                </P>
+              </div>
+              <div class="">
+                <P class="Paragraphs overflow-hidden text-ellipsis"> Marca:</P>
+                <P class="InfoParagraphs overflow-hidden text-ellipsis">
+                  {{ marca }}
+                </P>
+              </div>
+              <div class="">
+                <P class="Paragraphs overflow-hidden text-ellipsis">Codigo:</P>
+                <P class="InfoParagraphs overflow-hidden text-ellipsis">
+                  {{ codigo }}
+                </P>
+              </div>
+              <div class="">
+                <P class="Paragraphs overflow-hidden text-ellipsis">Cantidad:</P>
+                <P class="InfoParagraphs overflow-hidden text-ellipsis">
+                  {{ cantidad }}
+                </P>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-y-2 gap-x-2 md:grid-cols-4">
+              <div class="flex flex-col">
+                <P class="Paragraphs"> Precio compra:</P>
+                <P class="InfoParagraphs">
+                  {{ precio_compra }}
+                </P>
+              </div>
+              <div class="flex flex-col">
+                <P class="Paragraphs"> Precio venta:</P>
+                <P class="InfoParagraphs">
+                  {{ precio_venta }}
+                </P>
+              </div>
+            </div>
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 lg:h-80 flex justify-center">
+              <img src="assets/img/{{imagen}}" alt="Front of men&#039;s Basic Tee in black." class="object-cover object-center lg:h-80 lg:w-80">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-3">
+      <button *ngIf="data.footer"  class="bg-sky700 w-24 h-7 rounded-md text-white flex justify-center" (click)="primaryEvent.emit()">
+        {{ data.firstButton.label }}
+      </button>
+    </div>
+  </div>
+</div>

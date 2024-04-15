@@ -1,9 +1,9 @@
 <div>
   <label class="block text-sm font-medium leading-6 pl-3 w-full whitespace-nowrap text-ellipsis overflow-hidden"
-    [class]="formFiled.invalid && (formFiled.dirty || formFiled.touched) ?
+    [class]="formFiled.invalid && (formFiled.dirty || formFiled.touched) ? 
       'text-rose600' :
-        (formFiled.valid && (formFiled.value!='' && formFiled.value!=null && formFiled.value!=undefined)) ?
-          'text-sky500 hover:text-cyan500' :
+        (formFiled.valid && (formFiled.value!='' && formFiled.value!=null && formFiled.value!=undefined)) ? 
+          'text-sky500 hover:text-cyan500' : 
           'text-sky500 hover:text-cyan500'"
   >
       <ng-content></ng-content>
@@ -15,8 +15,8 @@
     <div class="relative">
       <fa-icon *ngIf="allowIcon" [icon]="iconInput" class="text-base leading-none" class="text-sky500 absolute top-1/2 right-2 transform -translate-y-1/2 -translate-x-1/2">
       </fa-icon>
-      <!-- <input [type]="typeInput.change" [value]="formFieldValue"  (change)="value.emit()" (input)="Change($event)"
-        [class]="formFiled.invalid && (formFiled.dirty || formFiled.touched) ?
+      <input [type]="typeInput.change" [value]="formFieldValue"  (change)="value.emit()" (input)="Change($event)"
+        [class]="formFiled.invalid && (formFiled.dirty || formFiled.touched) ? 
           'ring-rose600':
           (formFiled.valid && (formFiled.value!='' && formFiled.value!=null && formFiled.value!=undefined)) ?
             'ring-sky500 hover:ring-cyan500 hover:input-ring' :
@@ -24,7 +24,7 @@
         class="block w-full rounded-3xl border-0 py-1.5 pl-4 pr-[0.9rem] text-neutral700 ring-1 ring-inset placeholder:text-neutral400 focus:ring-2 focus:ring-inset sm:text-sm leading-tight h-10 "
         [placeholder]="holder" [appOnly]="directive" [max]="maxDate" [disabled]="disabled"
         #passwordInput
-        > -->
+        >
       <fa-icon (click)="allowOrDisallowPassword()"
         *ngIf="typeInput.init === 'password'" [icon]="iconEye"
         class="cursor-pointer text-base leading-none text-neutral400 absolute top-1/2 right-1 transform -translate-y-1/2 -translate-x-1/2">

@@ -1,0 +1,26 @@
+<div class="relative inline-block text-left">
+  <div>
+    <button type="button" (click)="isMenuOpen=!isMenuOpen" cdkOverlayOrigin #menuOverlay="cdkOverlayOrigin"
+    class="inline-flex w-full justify-center rounded-[0.5rem] bg-sky700 px-2 text-sm font-semibold shadow-sm ring-1 ring-inset
+            ring-graySilver hover:bg-blue-400" id="menu-button" aria-expanded="true" aria-haspopup="true">
+            <fa-icon [icon]="iconMenu" class=" text-white  fa-2xl" ></fa-icon>
+    </button>
+  </div>
+
+  <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="menuOverlay" [cdkConnectedOverlayOpen]="isMenuOpen">
+    <div [ngClass]="{
+        'transition ease-out duration-100 transform opacity-100 scale-100': isMenuOpen,
+        'transition ease-in duration-75 transform opacity-0 scale-95': !isMenuOpen
+        }"
+      class="absolute right-0 z-10 w-max origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+      role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+      <div role="none" class="border-2 border-sky500 rounded-md">
+        <button type="button" class="block w-full px-4 py-2 text-sm text-center text-blue-500  border-b-2" role="menuitem"
+          tabindex="-1" id="menu-item-3" *ngFor="let action of actions; let i = index">
+          <span class="hover:text-blue-200" (click)="result.emit(i)">{{action.label}} </span>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+
+</div>

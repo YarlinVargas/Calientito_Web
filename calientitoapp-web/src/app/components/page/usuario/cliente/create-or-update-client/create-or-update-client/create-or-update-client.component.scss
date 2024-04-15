@@ -1,0 +1,18 @@
+.min-h-10 {
+  min-height: 20rem;
+  @media (min-width: 768px) {
+    min-height: 5rem;
+  }
+}
+
+.editar-cliente {
+  &-titulo {
+    @media screen and (max-height: 600px) {
+      padding-bottom: 0.5rem !important;
+    }
+  }
+}
+
+.title-toggle {
+  margin-top: -0.15rem;
+}
