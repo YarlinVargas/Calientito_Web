@@ -34,7 +34,12 @@ module.exports = {
         lightSkyBlue: colors.lightSkyBlue,
         lavenderBlue: colors.lavenderBlue,
         pink: colors.pink,
-        yellow2:colors.yellow2
+        yellow2:colors.yellow2,
+        primary:'#FF6363',
+        secondary:{
+          100:'#E2E2D5',
+          200:'#888883'
+        }
       },
       textColor: {
         sky700: colors.deepBlue,

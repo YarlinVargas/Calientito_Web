@@ -1,0 +1,99 @@
+<div class="grid md:grid-cols-6">
+  <!-- content wrapper -->
+  <div class="md:col-span-1">
+
+    <nav class="text-right">
+      <div class="h-20 bg-stone-950 flex justify-between items-center">
+        <h1 class="font-bold uppercase p-4 border-b border-gray-100">
+          <a href="/" class="hover:text-yellow-400 text-white">Calientito app</a>
+        </h1>
+        <button class="px-4 cursor-pointer md:hidden"  (click)="OpenMenu()">
+          <fa-icon class="w-6 ml-2 text-white" [icon]="faBars"></fa-icon>
+        </button>
+      </div>
+      <ul  [ngClass]="{'hidden md:block': isOpen == false, 'text-sm mt-6 ': isOpen == true} "  id="menu">
+        <li class="text-gray-700 font-bold py-1">
+          <a routerLink="/home" class="px-4 flex justify-end border-r-4 border-primary">
+            <span>Home</span>
+            <fa-icon class="w-5 ml-2" [icon]="faHome"></fa-icon>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/aboutus" class="px-4 flex justify-end border-r-4 border-white">
+            <span>About Us</span>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/likes" class="px-4 flex justify-end border-r-4 border-white">
+            <span>Favorites</span>
+            <fa-icon class="w-5 ml-2" [icon]="faHeart"></fa-icon>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/configuration" class="px-4 flex justify-end border-r-4 border-white">
+            <span>Configuration</span>
+            <fa-icon class="w-5 ml-2" [icon]="faGears"></fa-icon>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/myProfile" class="px-4 flex justify-end border-r-4 border-white">
+            <span>My Profile</span>
+            <fa-icon class="w-5 ml-2" [icon]="faCircleUser"></fa-icon>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/help" class="px-4 flex justify-end border-r-4 border-white">
+            <span>Help</span>
+            <fa-icon class="w-5 ml-2" [icon]="faCircleQuestion"></fa-icon>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/bakeries" class="px-4 flex justify-end border-r-4 border-white">
+            <span>Bakeries</span>
+            <fa-icon class="w-5 ml-2" [icon]="faStore"></fa-icon>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/products" class="px-4 flex justify-end border-r-4 border-white">
+            <span>Products</span>
+            <fa-icon class="w-5 ml-2" [icon]="faBreadSlice"></fa-icon>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/maps" class="px-4 flex justify-end border-r-4 border-white">
+            <span>Maps</span>
+            <fa-icon class="w-5 ml-2" [icon]="faMapLocationDot"></fa-icon>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/shoppingCart" class="px-4 flex justify-end border-r-4 border-white">
+            <span>Shopping Cart</span>
+            <fa-icon class="w-5 ml-2" [icon]="faCartShopping"></fa-icon>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!--end nav-->
+  <main class="px-16 py-6 bg-gray-100 md:col-span-5 h-screen">
+    <div class="flex md:justify-end justify-center">
+      <a href="#" class="btn text-primary border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500">Log in</a>
+      <a href="#" class="btn text-primary ml-2 border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500">Sign up</a>
+    </div>
+
+   <div class="flex justify-center py-10">
+    <div class="bg-black w-64 h-64 rounded-full">
+      <img class="rounded-2xl lg:h-full" [src]="imgEnterprise" alt="" />
+    </div>
+   </div>
+
+    <header>
+      <h2 class="text-4xl font-semibold flex justify-start py-5">About Us</h2>
+      <h3 class="text-xl font-semibold">Calientito es una aplicacion que te permite saber en tiempo real que panaderias tienen pan caliente</h3>
+    </header>
+
+
+  </main>
+</div>
+
+

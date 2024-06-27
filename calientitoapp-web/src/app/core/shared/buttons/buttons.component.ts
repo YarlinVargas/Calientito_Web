@@ -26,7 +26,7 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class ButtonsComponent {
   @Input() typeBtn: 'button' | 'reset' | 'submit' = 'button';
-  @Input() color: 'sky700' | 'sky' | 'primary' | 'cyan' | 'azul' | 'teal' | 'borderCyan' | 'borderRed' | 'indigo' | 'indigoClean' | 'red' | 'amber' | 'amber400' | 'neutral' = 'primary';
+  @Input() color: 'sky700' | 'sky' | 'primary' | 'cyan' | 'azul' | 'teal' | 'borderCyan' | 'borderRed' | 'indigo' | 'indigoClean' | 'red' | 'amber' | 'amber400' | 'neutral' | 'yellow2'  = 'primary';
   @Input()
   width!: '10' | '24' | '32' | '40' | '48' | '64' | '72' | '80' | '96' | 'auto';
   @Input()
@@ -105,6 +105,10 @@ export class ButtonsComponent {
     neutral: {
       'bg-neutral400': true,
       'hover:bg-neutral200': true,
+    },
+    yellow2: {
+      'bg-yellow2': true,
+      'hover:bg-yellow2-200': true,
     }
   }
 

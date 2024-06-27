@@ -14,10 +14,16 @@
     <div class="w-full h-1/6  items-center justify-center rounded-2xl  my-4  pr-[0em] min-[1330px]:pr-[6em]">
       <div class="w-full h-full  items-center justify-center min-[956px]:hidden">
         <div class="lg:w-[75%]  lg:h:[100%] flex justify-center lg:h-[auto] h-[13em]  ">
-          <img class="rounded-2xl border-8 border-white bg-white  lg:h-full" [src]="imgEnterprise" alt="" />
+          <img class="rounded-2xl lg:h-full" [src]="imgEnterprise" alt="" />
         </div>
       </div>
     </div>
+    <div class="justify-center w-full h-full flex items-center pl-4 text-md sm:pl-14 sm:text-base min-[956px]:text-xl 3xl:text-2xl">
+      <div class="px-4 sm:px-10 text-white">
+        <p class="text-left font-bold pb-0 text-black">CALIENTITO APP</p>
+      </div>
+    </div>
+
     <div class="grid items-center w-full h-5/6 min-[956px]:h-full xl:pt-[5em] pt-[0em]">
       <div id="tab-bar">
         <!-- <ul
@@ -32,40 +38,33 @@
         </ul> -->
 
         <div class="flex flex-col break-words bg-white shadow-lg rounded-lg">
-          <div class="relative p-3 sm:p-5 rounded-t-lg bg-yellow2">
-            <button class="absolute mt-[0.2em] ml-[2em] self-center w-14 h-14 3xl:w-16 3xl:h-16 rounded-full shadow-lg bg-white">
+          <div class="relative p-3 sm:p-5 rounded-t-lg bg-white">
+            <!-- <button class="absolute mt-[0.2em] ml-[2em] self-center w-14 h-14 3xl:w-16 3xl:h-16 rounded-full shadow-lg bg-white">
               <fa-icon class="text-sky700 fa-2xl" [icon]="faGear"></fa-icon>
-            </button>
-            <div
-              class="justify-center w-full h-full flex items-center pl-4 text-md sm:pl-14 sm:text-base min-[956px]:text-xl 3xl:text-2xl">
+            </button> -->
 
-              <div class="px-4 sm:px-10 text-white">
-                <p class="text-left font-bold pb-0 text-black">CALIENTITO APP</p>
-
-              </div>
-            </div>
           </div>
           <div class="pr-7 pl-7  py-5">
             <form class="space-y-6" [formGroup]="form">
 
               <div>
                 <app-field-input [parentForm]="form" fieldName="userName" formControlName="userName"
-                  holder="Escribir número">Usuario</app-field-input>
+                  holder="Email"></app-field-input>
               </div>
               <div>
-                <app-field-input type="password" holder="Contraseña" [parentForm]="form" fieldName="password"
-                  formControlName="password">Contraseña</app-field-input>
+                <app-field-input type="password" holder="Password" [parentForm]="form" fieldName="password"
+                  formControlName="password"></app-field-input>
               </div>
-              <div class="relative">
+              <div class="pb-5">
                 <div
                   class="absolute  max-[419px]:absolute max-[351px]:relative max-[460px]:relative flex items-center space-x-2">
                   <input type="checkbox" id="mi-checkbox1" (click)="Checked(3, $event.target)" [checked]="false"
                     class="remember-me form-checkbox h-5 w-5">
-                  <label for="mi-checkbox" class="text-xs sm:text-sm text-gray1">Recordar datos</label>
+                  <label for="mi-checkbox" class="text-xs sm:text-sm text-gray1">Remember me </label>
                 </div>
                 <div class="text-sm 3xl:text-lg flex items-end justify-end">
                   <a (click)="RecoverPassword()"
-                    class="cursor-pointer text-xs sm:text-sm font-semibold text-sky700 hover:text-sky500 hover:underline">Olvidé mi
+                    class="cursor-pointer text-xs sm:text-sm font-semibold text-yellow2 hover:text-sky500 hover:underline">Olvidé mi
                     contraseña</a>
                 </div>
               </div>
@@ -84,15 +83,19 @@
 
             </form>
             <div class="ButtonIngresar">
-              <app-buttons [typeBtn]="'submit'" [color]="'primary'" [width]="'32'" [height]="'8'" [button]="2"
-                label="Ingresar" (click)="Auth()"></app-buttons>
+              <button type="submit" (click)="Auth()" class="flex items-center justify-center max-[350px]:ml-0 rounded-full py-3 px-6 text-lg font-semibold   xl:text-base bg-yellow2 text-white font-sans w-full h-10">
+                <span>Login</span>
+              </button>
+            </div>
+            <div class="flex text-xs pt-5">
+              <p class="mr-4">Don't have an account?</p>
+              <a (click)="CreateAccount()"
+              class="cursor-pointer text-xs sm:text-sm font-semibold text-yellow2 hover:text-sky500 hover:underline">Create and account</a>
             </div>
           </div>
         </div>
 
-        <div class="w-full h-10 3xl:h-14 flex items-center justify-center">
-          <img class="w-52 min-[956px]:w-52 xl:w-60 2xl:w-72 3xl:w-96" src="assets/img/logoFooter.png" />
-        </div>
+
       </div>
 
     </div>

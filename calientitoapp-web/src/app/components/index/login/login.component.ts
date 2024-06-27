@@ -161,7 +161,7 @@ export class LoginComponent implements OnInit {
     this._usuarioService.authenticateUsuario(data.userName, data.password).subscribe(
       () => {
         console.log('Usuario logueado correctamente');
-        this.router.navigateByUrl(`gestionUsuario`);
+        this.router.navigateByUrl(`welcome`);
       },
       error => {
         console.error('Error al loguear el usuario', error);
@@ -189,9 +189,12 @@ export class LoginComponent implements OnInit {
   }
 
   public RecoverPassword() {
-    this.router.navigate(['/recoverPassword', this.openTab == 1 ? 3 : this.openTab == 3 ? 1 : this.openTab]);
+    this.router.navigateByUrl('/recoverPassword');
   }
 
+  public CreateAccount(){
+    this.router.navigateByUrl('/createAccount');
+  }
   private ValidRemember() {
 
     if (localStorage.getItem('remember')) {

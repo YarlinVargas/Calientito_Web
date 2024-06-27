@@ -1,0 +1,24 @@
+<section class="bg-gray-500 h-screen">
+  <div class="flex flex-col items-center px-6 py-8 mx-auto space-y-4">
+    <div class="w-full bg-white rounded-lg flex justify-center">
+      <img class="h-80 w-80 "
+      src="assets/img/welcome1.png"
+      alt="welcome1"
+    />
+    </div>
+    <div class="w-full bg-yellow2 rounded-lg flex justify-center">
+      <div class="p-6 space-y-4">
+        <h1 class="text-xl font-bold text-white">Recoje tu pan caliente</h1>
+        <h1 class="text-white">A simple explanation to the audience regarding the headline</h1>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="text-white">Skip</div>
+          <div>
+            <button class="bg-white h-10 w-10 rounded-full" (click)="goToHome()">
+              <fa-icon [icon]="faAngleRight" class="text-yellow2"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

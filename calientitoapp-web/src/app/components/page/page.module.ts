@@ -22,6 +22,18 @@ import { CreateOrUpdateOrdenComponent } from './usuario/orden-trabajo/create-or-
 import { CreateOrUpdateNotificacionComponent } from './usuario/notificacion/create-or-update-notificacion/create-or-update-notificacion/create-or-update-notificacion.component';
 import { GestorProductosComponent } from './usuario/productos/gestor-productos/gestor-productos.component';
 import { CreateOrUpdateProductComponent } from './usuario/productos/create-or-update-product/create-or-update-product/create-or-update-product.component';
+import { HomeComponent } from './home/home.component';
+import { LikesComponent } from './likes/likes.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { ProductsComponent } from './products/products.component';
+import { BakeriesComponent } from './bakeries/bakeries.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { HelpComponent } from './help/help.component';
+import { MapsComponent } from './maps/maps.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
 
 
 
@@ -40,6 +52,18 @@ import { CreateOrUpdateProductComponent } from './usuario/productos/create-or-up
     CreateOrUpdateNotificacionComponent,
     GestorProductosComponent,
     CreateOrUpdateProductComponent,
+    HomeComponent,
+    LikesComponent,
+    WelcomeComponent,
+    ProductsComponent,
+    BakeriesComponent,
+    FavoritesComponent,
+    AboutUsComponent,
+    HelpComponent,
+    MapsComponent,
+    ShoppingCartComponent,
+    MyProfileComponent,
+    ConfigurationComponent,
   ],
   imports: [
     CommonModule,
