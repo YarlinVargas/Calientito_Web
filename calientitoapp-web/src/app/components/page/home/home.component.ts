@@ -60,8 +60,8 @@ export class HomeComponent implements OnInit, AfterViewInit{
   goToBakeries(){
     this.router.navigateByUrl(`bakeries`);
   }
-  OnProducts(){
-    this.router.navigateByUrl(`products`);
+  OnCategory(){
+    this.router.navigateByUrl(`category`);
   }
   OnShopping(){
     this.router.navigateByUrl(`shoppingCart`);

@@ -34,6 +34,7 @@ import { MapsComponent } from './maps/maps.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { CategoryComponent } from './category/category.component';
 
 
 
@@ -64,6 +65,7 @@ import { ConfigurationComponent } from './configuration/configuration.component'
     ShoppingCartComponent,
     MyProfileComponent,
     ConfigurationComponent,
+    CategoryComponent,
   ],
   imports: [
     CommonModule,

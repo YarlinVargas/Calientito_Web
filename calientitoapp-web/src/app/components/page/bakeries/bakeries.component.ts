@@ -33,8 +33,8 @@ export class BakeriesComponent {
 
   ) {  }
 
-  products(){
-    this.router.navigateByUrl(`likes`);
+  OnProducts(){
+    this.router.navigateByUrl(`products`);
   }
   public OpenMenu(){
     this.isOpen = !this.isOpen;
