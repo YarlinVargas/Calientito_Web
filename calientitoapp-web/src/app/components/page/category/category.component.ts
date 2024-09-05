@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { faClock, faHome , faCartShopping,faCircleQuestion, faGears, faHeart, faCircleUser, faBreadSlice,faStore , faMapLocationDot, faBell, faBars, faBagShopping, faClockRotateLeft} from '@fortawesome/free-solid-svg-icons';
+import { faClock, faHome , faCartShopping,faCircleQuestion, faGears, faHeart, faCircleUser, faBreadSlice,faStore , faMapLocationDot, faBell, faBars} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  selector: 'app-category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.scss']
 })
-export class ProductsComponent {
+export class CategoryComponent {
   faClock = faClock;
   faHome = faHome;
   faCartShopping = faCartShopping;
@@ -20,13 +20,11 @@ export class ProductsComponent {
   faMapLocationDot = faMapLocationDot;
   faBell = faBell;
   faBars = faBars;
-  faBagShopping = faBagShopping;
-  faClockRotateLeft = faClockRotateLeft;
 
   public isOpen:boolean=false;
-
   //IMAGEN EMPRESA
   imgEnterprise = "assets/img/logo_calientito.png";
+
 
   constructor(
 
@@ -34,8 +32,8 @@ export class ProductsComponent {
 
   ) {  }
 
-  products(){
-    this.router.navigateByUrl(`likes`);
+  goProducts(){
+    this.router.navigateByUrl(`products`);
   }
   public OpenMenu(){
     this.isOpen = !this.isOpen;

@@ -75,26 +75,78 @@
     </nav>
   </div>
   <!--end nav-->
-  <main class="px-16 py-6 bg-gray-100 md:col-span-5 h-screen">
+  <main class="px-16 py-6 bg-gray-200 md:col-span-5 h-screen">
     <div class="flex md:justify-end justify-center">
       <a href="#" class="btn text-primary border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500">Log in</a>
       <a href="#" class="btn text-primary ml-2 border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500">Sign up</a>
     </div>
 
-   <div class="flex justify-center py-10">
-    <div class="bg-black w-64 h-64 rounded-full flex justify-center items-center">
-      <fa-icon class="text-9xl text-yellow2" [icon]="faGears"></fa-icon>
-    </div>
-   </div>
-
     <header>
-      <h2 class="text-4xl font-semibold flex justify-start py-5">Configuration</h2>
-      <h3 class="text-xl">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia voluptates minima vel? Culpa ipsa commodi explicabo in autem, repellendus amet pariatur numquam minus dolores odio ipsam, dolorum consequuntur repudiandae nihil!</h3>
+      <div class="grid grid-cols-3">
+        <div class="flex justify-center py-10">
+          <div class="bg-black w-20 h-20 rounded-full flex justify-center items-center">
+            <div class="flex justify-center py-10">
+              <div class="bg-black w-20 h-20 rounded-full">
+                <img class="rounded-2xl lg:h-full" [src]="imgEnterprise" alt="" />
+              </div>
+             </div>
+          </div>
+         </div>
+
+        <div class="m-4 flex justify-center items-center">
+          <span class="font-bold text-3xl">CATEGORIA</span>
+        </div>
+        <div class="flex justify-center items-center">
+          <div class="bg-transparent w-20 h-20 rounded-full flex justify-center items-center">
+            <fa-icon class="text-5xl text-black" [icon]="faCartShopping"></fa-icon>
+          </div>
+         </div>
+      </div>
     </header>
 
+    <div>
+      <div class="mt-8 grid lg:grid-cols-4 grid-cols-2 gap-10">
+        <!-- cards go here -->
+        <button (click)="goProducts()">
+          <div class="bg-white rounded-lg overflow-hidden shadow-md relative hover:shadow-lg">
+            <img src="assets/img/bunuelos.png" alt="bunuelos" class="w-full h-32 sm:h-48 object-cover">
+            <div class="m-4">
+              <span class="font-bold flex justify-center">Bueñuelos</span>
+            </div>
+          </div>
+        </button>
 
+         <button (click)="goProducts()">
+          <div class="bg-white rounded-lg overflow-hidden shadow-md relative hover:shadow-lg">
+            <img src="assets/img/almojabana.png" alt="almojabana" class="w-full h-32 sm:h-48 object-cover">
+            <div class="m-4">
+              <span class="font-bold flex justify-center">Almojabana</span>
+            </div>
+          </div>
+        </button>
+
+        <button (click)="goProducts()">
+          <div class="bg-white rounded-lg overflow-hidden shadow-md relative hover:shadow-lg">
+            <img src="assets/img/croissant.png" alt="croissant" class="w-full h-32 sm:h-48 object-cover">
+            <div class="m-4">
+              <span class="font-bold flex justify-center">Croissant</span>
+            </div>
+           </div>
+        </button>
+
+        <button (click)="goProducts()">
+          <div class="bg-white rounded-lg overflow-hidden shadow-md relative hover:shadow-lg">
+            <img src="assets/img/pandebono.png" alt="croissant" class="w-full h-32 sm:h-48 object-cover">
+            <div class="m-4">
+              <span class="font-bold flex justify-center">Pandebono</span>
+            </div>
+          </div>
+        </button>
+
+      </div>
+
+    </div>
   </main>
 </div>
-
 
 
