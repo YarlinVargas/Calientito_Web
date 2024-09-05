@@ -12,6 +12,7 @@ import { MapsComponent } from './maps/maps.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { CategoryComponent } from './category/category.component';
 
 const routes: Routes = [
   {
@@ -68,6 +69,11 @@ const routes: Routes = [
     path: 'configuration',
     component: ConfigurationComponent,
     title: 'Configuration'
+  },
+  {
+    path: 'category',
+    component: CategoryComponent,
+    title: 'Categoria'
   }
 ];
 
