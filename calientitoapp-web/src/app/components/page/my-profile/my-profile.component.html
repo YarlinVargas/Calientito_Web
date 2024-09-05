@@ -1,1 +1,75 @@
-<p>my-profile works!</p>
+   <!-- content wrapper -->
+   <div class="md:col-span-1">
+
+    <nav class="text-right">
+      <div class="h-20 bg-stone-950 flex justify-between items-center">
+        <h1 class="font-bold uppercase p-4 border-b border-gray-100">
+          <a href="/" class="hover:text-yellow-400 text-white">Calientito app</a>
+        </h1>
+        <button class="px-4 cursor-pointer md:hidden"  (click)="OpenMenu()">
+          <fa-icon class="w-6 ml-2 text-white" [icon]="faBars"></fa-icon>
+        </button>
+      </div>
+      <ul  [ngClass]="{'hidden md:block': isOpen == false, 'text-sm mt-6 ': isOpen == true} "  id="menu">
+        <li class="text-gray-700 font-bold py-1">
+          <a routerLink="/home" class="px-4 flex justify-end border-r-4 border-primary">
+            <span>Home</span>
+            <fa-icon class="w-5 ml-2" [icon]="faHome"></fa-icon>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/aboutus" class="px-4 flex justify-end border-r-4 border-white">
+            <span>About Us</span>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/likes" class="px-4 flex justify-end border-r-4 border-white">
+            <span>Favorites</span>
+            <fa-icon class="w-5 ml-2" [icon]="faHeart"></fa-icon>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/configuration" class="px-4 flex justify-end border-r-4 border-white">
+            <span>Configuration</span>
+            <fa-icon class="w-5 ml-2" [icon]="faGears"></fa-icon>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/myProfile" class="px-4 flex justify-end border-r-4 border-white">
+            <span>My Profile</span>
+            <fa-icon class="w-5 ml-2" [icon]="faCircleUser"></fa-icon>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/help" class="px-4 flex justify-end border-r-4 border-white">
+            <span>Help</span>
+            <fa-icon class="w-5 ml-2" [icon]="faCircleQuestion"></fa-icon>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/bakeries" class="px-4 flex justify-end border-r-4 border-white">
+            <span>Bakeries</span>
+            <fa-icon class="w-5 ml-2" [icon]="faStore"></fa-icon>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/category" class="px-4 flex justify-end border-r-4 border-white">
+            <span>Products</span>
+            <fa-icon class="w-5 ml-2" [icon]="faBreadSlice"></fa-icon>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/maps" class="px-4 flex justify-end border-r-4 border-white">
+            <span>Maps</span>
+            <fa-icon class="w-5 ml-2" [icon]="faMapLocationDot"></fa-icon>
+          </a>
+        </li>
+        <li class="py-1">
+          <a routerLink="/shoppingCart" class="px-4 flex justify-end border-r-4 border-white">
+            <span>Shopping Cart</span>
+            <fa-icon class="w-5 ml-2" [icon]="faCartShopping"></fa-icon>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
