@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { faClock, faHome , faCartShopping,faCircleQuestion, faGears, faHeart, faCircleUser, faBreadSlice,faStore , faMapLocationDot, faBell, faBars} from '@fortawesome/free-solid-svg-icons';
+
 
 declare const google:any;
 
@@ -9,7 +11,21 @@ declare const google:any;
   styleUrls: ['./maps.component.scss']
 })
 export class MapsComponent implements OnInit, AfterViewInit{
+    //ICONOS
+    faClock = faClock;
+    faHome = faHome;
+    faCartShopping = faCartShopping;
+    faCircleQuestion = faCircleQuestion;
+    faGears = faGears;
+    faHeart = faHeart;
+    faCircleUser = faCircleUser;
+    faBreadSlice = faBreadSlice;
+    faStore = faStore;
+    faMapLocationDot = faMapLocationDot;
+    faBell = faBell;
+    faBars = faBars;
 
+    public isOpen:boolean=false;
   map: any;
   @ViewChild('mapElement') mapElement: any;
 
@@ -31,5 +47,8 @@ export class MapsComponent implements OnInit, AfterViewInit{
 
   goToBakeries(){
     this.router.navigateByUrl(`bakeries`);
+  }
+  public OpenMenu(){
+    this.isOpen = !this.isOpen;
   }
 }
