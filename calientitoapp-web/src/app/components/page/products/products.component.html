@@ -23,13 +23,13 @@
             <span>About Us</span>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 2">
           <a routerLink="/likes" class="px-4 flex justify-end border-r-4 border-white">
             <span>Favorites</span>
             <fa-icon class="w-5 ml-2" [icon]="faHeart"></fa-icon>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 3 && dataUser.idPerfil != 2">
           <a routerLink="/configuration" class="px-4 flex justify-end border-r-4 border-white">
             <span>Configuration</span>
             <fa-icon class="w-5 ml-2" [icon]="faGears"></fa-icon>
@@ -47,7 +47,7 @@
             <fa-icon class="w-5 ml-2" [icon]="faCircleQuestion"></fa-icon>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 2">
           <a routerLink="/bakeries" class="px-4 flex justify-end border-r-4 border-white">
             <span>Bakeries</span>
             <fa-icon class="w-5 ml-2" [icon]="faStore"></fa-icon>
@@ -59,13 +59,13 @@
             <fa-icon class="w-5 ml-2" [icon]="faBreadSlice"></fa-icon>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 2">
           <a routerLink="/maps" class="px-4 flex justify-end border-r-4 border-white">
             <span>Maps</span>
             <fa-icon class="w-5 ml-2" [icon]="faMapLocationDot"></fa-icon>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 2 && dataUser.idPerfil != 3">
           <a routerLink="/shoppingCart" class="px-4 flex justify-end border-r-4 border-white">
             <span>Shopping Cart</span>
             <fa-icon class="w-5 ml-2" [icon]="faCartShopping"></fa-icon>
@@ -95,12 +95,54 @@
 
     </header>
 
-    <div>
-      <div class="mt-8 grid lg:grid-cols-2 gap-5">
+    <div *ngIf="itemProducts == 1">
+      <div class="mt-8 grid lg:grid-cols-2 gap-5" *ngFor="let item of listProducts; let i = index">
         <!-- cards go here -->
          <div class="bg-yellow-100 rounded-xl overflow-hidden shadow-md relative hover:shadow-lg">
           <div class="grid grid-rows-4 grid-cols-4 gap-4">
             <div class="row-span-4 col-span-1 bg-transparent">
+              <img src="{{item.imagen}}" alt="croissant" class="w-full h-32 sm:h-48 object-cover rounded-l-xl">
+            </div>
+
+            <div class="col-span-2 row-span-4 flex justify-center items-center">
+              <div>
+                <span class="font-bold flex justify-start text-xl mb-2">{{item.name}}</span>
+                <span class="flex justify-start mb-8">{{item.descripcion}}</span>
+                <div class="flex justify-center ">
+                  <button class="bg-white mr-4 h-10 w-20 rounded-lg">Fresco</button>
+                  <button class="bg-yellow2 mr-4 h-10 w-20 rounded-lg text-white">Caliente</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-span-1 m-4 row-span-4 flex justify-center items-center">
+            <div>
+              <fa-icon class="w-5 inline-block text-yellow2 text-3xl" [icon]="faHeart"></fa-icon>
+              <button class="bg-yellow2  h-10 w-28 rounded-lg mt-5">
+                <div class="flex justify-center items-center">
+                  <span class="font-bold text-white">{{item.precio}}</span>
+                  <div class="bg-white rounded-full w-10 h-10 ml-8">
+                    <fa-icon class="w-5 text-yellow2 text-3xl" [icon]="faBagShopping"></fa-icon>
+                  </div>
+                </div>
+              </button>
+              <button class="bg-yellow2 h-12 w-28 rounded-lg flex justify-center items-center mt-5" title="d">
+                  <div class="grid grid-cols-3 gap-4">
+                    <fa-icon class="w-5 inline-block text-black text-3xl" [icon]="faClockRotateLeft"></fa-icon>
+
+                    <fa-icon class="w-5 inline-block text-black text-3xl" [icon]="faClockRotateLeft"></fa-icon>
+
+                    <fa-icon class="w-5 inline-block text-black text-3xl" [icon]="faClockRotateLeft"></fa-icon>
+                  </div>
+              </button>
+            </div>
+          </div>
+         </div>
+        </div>
+
+        <!-- <div class="bg-yellow-100 rounded-xl overflow-hidden shadow-md relative hover:shadow-lg">
+          <div class="grid grid-rows-4 grid-cols-4 gap-4">
+            <div class="row-span-4 col-span-1 bg-transparent">
               <img src="assets/img/bunuelos.png" alt="croissant" class="w-full h-32 sm:h-48 object-cover rounded-l-xl">
             </div>
 
@@ -126,7 +168,7 @@
                   </div>
                 </div>
               </button>
-              <button class="bg-yellow2 h-12 w-28 rounded-lg flex justify-center items-center mt-5">
+              <button class="bg-yellow2 h-12 w-28 rounded-lg flex justify-center items-center mt-5" title="b">
                   <div class="grid grid-cols-3 gap-4">
                     <fa-icon class="w-5 inline-block text-black text-3xl" [icon]="faClockRotateLeft"></fa-icon>
 
@@ -168,7 +210,7 @@
                   </div>
                 </div>
               </button>
-              <button class="bg-yellow2 h-12 w-28 rounded-lg flex justify-center items-center mt-5">
+              <button class="bg-yellow2 h-12 w-28 rounded-lg flex justify-center items-center mt-5" title="b">
                   <div class="grid grid-cols-3 gap-4">
                     <fa-icon class="w-5 inline-block text-black text-3xl" [icon]="faClockRotateLeft"></fa-icon>
 
@@ -180,94 +222,11 @@
             </div>
           </div>
          </div>
-        </div>
-
-        <div class="bg-yellow-100 rounded-xl overflow-hidden shadow-md relative hover:shadow-lg">
-          <div class="grid grid-rows-4 grid-cols-4 gap-4">
-            <div class="row-span-4 col-span-1 bg-transparent">
-              <img src="assets/img/bunuelos.png" alt="croissant" class="w-full h-32 sm:h-48 object-cover rounded-l-xl">
-            </div>
-
-            <div class="col-span-2 row-span-4 flex justify-center items-center">
-              <div>
-                <span class="font-bold flex justify-start text-xl mb-2">Producto 1</span>
-                <span class="flex justify-start mb-8">Product Description</span>
-                <div class="flex justify-center ">
-                  <button class="bg-white mr-4 h-10 w-20 rounded-lg">Fresco</button>
-                  <button class="bg-yellow2 mr-4 h-10 w-20 rounded-lg text-white">Caliente</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-span-1 m-4 row-span-4 flex justify-center items-center">
-            <div>
-              <fa-icon class="w-5 inline-block text-yellow2 text-3xl" [icon]="faHeart"></fa-icon>
-              <button class="bg-yellow2  h-10 w-28 rounded-lg mt-5">
-                <div class="flex justify-center items-center">
-                  <span class="font-bold text-white">$8.99</span>
-                  <div class="bg-white rounded-full w-10 h-10">
-                    <fa-icon class="w-5 inline-block text-yellow2 text-3xl" [icon]="faBagShopping"></fa-icon>
-                  </div>
-                </div>
-              </button>
-              <button class="bg-yellow2 h-12 w-28 rounded-lg flex justify-center items-center mt-5">
-                  <div class="grid grid-cols-3 gap-4">
-                    <fa-icon class="w-5 inline-block text-black text-3xl" [icon]="faClockRotateLeft"></fa-icon>
-
-                    <fa-icon class="w-5 inline-block text-black text-3xl" [icon]="faClockRotateLeft"></fa-icon>
-
-                    <fa-icon class="w-5 inline-block text-black text-3xl" [icon]="faClockRotateLeft"></fa-icon>
-                  </div>
-              </button>
-            </div>
-          </div>
-         </div>
-        </div>
+        </div> -->
 
       </div>
 
     </div>
   </main>
 </div>
-
-<!--
-<div class="mt-8 grid lg:grid-cols-3 gap-10"> -->
-  <!-- cards go here -->
-   <!-- <div class="bg-yellow2 rounded over-flow-hidden shadow-md relative hover:shadow-lg">
-    <img src="assets/img/croissant.jpg" alt="croissant" class="w-full h-32 sm:h-48 object-cover">
-    <div class="m-4">
-      <span class="font-bold flex justify-center">Panaderia 1</span> -->
-      <!-- <span class="block text-gray-500 text-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit nulla facere voluptatem dignissimos quisquam, obcaecati praesentium distinctio quos beatae adipisci voluptates corrupti unde maxime doloremque possimus incidunt explicabo quia dolor?</span> -->
-    <!-- </div> -->
-    <!-- Badges -->
-    <!-- <div class="badge">
-      <fa-icon class="w-5 inline-block" [icon]="faClock"></fa-icon>
-      <span>25 mins</span>
-    </div>
-   </div>
-   <div class="bg-white rounded overflow-hidden shadow-md relative hover:shadow-lg">
-    <img src="assets/img/croissant.jpg" alt="croissant" class="w-full h-32 sm:h-48 object-cover">
-    <div class="m-4">
-      <span class="font-bold">Bean Chilli Stew</span>
-      <span class="block text-gray-500 text-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit nulla facere voluptatem dignissimos quisquam, obcaecati praesentium distinctio quos beatae adipisci voluptates corrupti unde maxime doloremque possimus incidunt explicabo quia dolor?</span>
-    </div> -->
-    <!-- Badges -->
-    <!-- <div class="badge">
-      <fa-icon class="w-5 inline-block" [icon]="faClock"></fa-icon>
-      <span>25 mins</span>
-    </div>
-   </div>
-   <div class="bg-white rounded overflow-hidden shadow-md relative hover:shadow-lg">
-    <img src="assets/img/croissant.jpg" alt="croissant" class="w-full h-32 sm:h-48 object-cover">
-    <div class="m-4">
-      <span class="font-bold">Bean Chilli Stew</span>
-      <span class="block text-gray-500 text-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit nulla facere voluptatem dignissimos quisquam, obcaecati praesentium distinctio quos beatae adipisci voluptates corrupti unde maxime doloremque possimus incidunt explicabo quia dolor?</span>
-    </div> -->
-    <!-- Badges -->
-    <!-- <div class="badge">
-      <fa-icon class="w-5 inline-block" [icon]="faClock"></fa-icon>
-      <span>25 mins</span>
-    </div>
-   </div>
-</div> -->
 

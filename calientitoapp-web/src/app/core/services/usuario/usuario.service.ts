@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export interface Usuario {
   id_usuario: number;
@@ -18,16 +19,37 @@ export interface Usuario {
   eliminado: number;
 }
 
+export interface UsuarioModel {
+  id_usuario:number,
+  name :string,
+  dateBirthday? :string,
+ genero? :string,
+  email? :string,
+  password :string,
+ active :boolean,
+ idPerfil :number,
+  creationDate :Date,
+ updateDate? :null,
+ lastName? :string,
+phoneNumber? :string,
+  type_document?:string,
+ num_document? :string,
+ direccion? :string,
+ department? :string,
+city? :string,
+  userName?:string,
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
-  private readonly apiUrl = 'http://localhost:3000/api';
+  apiUrl = environment.apiEndpoint;
 
   constructor(private http: HttpClient) { }
 
-  getUsuarios(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(`${this.apiUrl}/usuarios`);
+  getUsuarios(): Observable<UsuarioModel[]> {
+    return this.http.get<UsuarioModel[]>(`${this.apiUrl}listUser`);
   }
 
   getUsuarioById(id: number): Observable<Usuario> {
@@ -46,11 +68,13 @@ export class UsuarioService {
     return this.http.delete<void>(`${this.apiUrl}/usuarios/${id}`);
   }
 
-  authenticateUsuario(login: string,password:string): Observable<Usuario> {
+  authenticateUsuario(idPerfil:number,login: string,password:string): Observable<Usuario> {
     const body = {
+      idPerfil:idPerfil,
       login: login,
       password: password
     };
-    return this.http.post<Usuario>(`${this.apiUrl}/authenticate`, body);
+    debugger
+    return this.http.post<Usuario>(`${this.apiUrl}/auth`, body);
   }
 }

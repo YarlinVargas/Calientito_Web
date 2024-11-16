@@ -25,14 +25,16 @@ export class AboutUsComponent {
   public isOpen:boolean=false;
   //IMAGEN EMPRESA
   imgEnterprise = "assets/img/logo_calientito.png";
-
+  dataUser : any;
 
   constructor(
 
     private router: Router,
 
   ) {  }
-
+  ngOnInit(): void {
+    this.dataUser = JSON.parse(sessionStorage.getItem('auth')!);
+  }
   products(){
     this.router.navigateByUrl(`likes`);
   }

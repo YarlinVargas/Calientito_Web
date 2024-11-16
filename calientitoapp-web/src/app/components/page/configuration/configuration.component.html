@@ -23,13 +23,13 @@
             <span>About Us</span>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 2">
           <a routerLink="/likes" class="px-4 flex justify-end border-r-4 border-white">
             <span>Favorites</span>
             <fa-icon class="w-5 ml-2" [icon]="faHeart"></fa-icon>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 3 && dataUser.idPerfil != 2">
           <a routerLink="/configuration" class="px-4 flex justify-end border-r-4 border-white">
             <span>Configuration</span>
             <fa-icon class="w-5 ml-2" [icon]="faGears"></fa-icon>
@@ -47,7 +47,7 @@
             <fa-icon class="w-5 ml-2" [icon]="faCircleQuestion"></fa-icon>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 2">
           <a routerLink="/bakeries" class="px-4 flex justify-end border-r-4 border-white">
             <span>Bakeries</span>
             <fa-icon class="w-5 ml-2" [icon]="faStore"></fa-icon>
@@ -59,13 +59,13 @@
             <fa-icon class="w-5 ml-2" [icon]="faBreadSlice"></fa-icon>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 2">
           <a routerLink="/maps" class="px-4 flex justify-end border-r-4 border-white">
             <span>Maps</span>
             <fa-icon class="w-5 ml-2" [icon]="faMapLocationDot"></fa-icon>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 2 && dataUser.idPerfil != 3">
           <a routerLink="/shoppingCart" class="px-4 flex justify-end border-r-4 border-white">
             <span>Shopping Cart</span>
             <fa-icon class="w-5 ml-2" [icon]="faCartShopping"></fa-icon>
@@ -75,7 +75,7 @@
     </nav>
   </div>
   <!--end nav-->
-  <main class="px-16 py-6 bg-gray-100 md:col-span-5 h-screen">
+  <main class="px-16 py-6 bg-gray-100 md:col-span-5 max-h-screen">
     <div class="flex md:justify-end justify-center">
       <a href="#" class="btn text-primary border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500">Log in</a>
       <a href="#" class="btn text-primary ml-2 border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500">Sign up</a>
@@ -89,9 +89,33 @@
 
     <header>
       <h2 class="text-4xl font-semibold flex justify-start py-5">Configuration</h2>
-      <h3 class="text-xl">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia voluptates minima vel? Culpa ipsa commodi explicabo in autem, repellendus amet pariatur numquam minus dolores odio ipsam, dolorum consequuntur repudiandae nihil!</h3>
-    </header>
+      <h3 class="text-xl">Agrege los parametros necesarios, seleccionando el boton de su preferencia</h3>
 
+    </header>
+    <div>
+      <div class="mt-8 grid grid-cols-2 gap-10" >
+        <button (click)="OnGestionUsuarios()">
+          <div class="bg-yellow2 rounded over-flow-hidden shadow-md relative hover:shadow-lg">
+              <span class="font-bold flex justify-center">Gestion de usuarios</span>
+            </div>
+        </button>
+        <button (click)="OnGestionPanaderias()">
+          <div class="bg-yellow2 rounded over-flow-hidden shadow-md relative hover:shadow-lg">
+              <span class="font-bold flex justify-center">Gestion de panaderias</span>
+            </div>
+        </button>
+        <button (click)="OnGestionProductos()">
+          <div class="bg-yellow2 rounded over-flow-hidden shadow-md relative hover:shadow-lg">
+              <span class="font-bold flex justify-center">Gestion de productos</span>
+            </div>
+        </button>
+        <button (click)="OnGestionPerfiles()">
+          <div class="bg-yellow2 rounded over-flow-hidden shadow-md relative hover:shadow-lg">
+              <span class="font-bold flex justify-center">Gestion de perfiles</span>
+            </div>
+        </button>
+      </div>
+    </div>
 
   </main>
 </div>

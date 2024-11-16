@@ -10,3 +10,13 @@ export interface Producto {
   eliminado: number,
   imagen: string
 }
+export interface ProductoModel {
+  idProducto: number,
+  name: string,
+  precio: number,
+  descripcion: string,
+  creationDate: Date,
+  updateDate: Date | null,
+  active: boolean,
+  imagen: string
+}

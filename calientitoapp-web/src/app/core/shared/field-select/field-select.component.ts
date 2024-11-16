@@ -59,6 +59,7 @@ export class FieldSelectComponent implements OnInit, OnDestroy, ControlValueAcce
 
 
   ngOnChanges(changes: SimpleChanges) {
+    debugger
     if(changes['options'] && changes['options'].currentValue != undefined){
       this.optionsList = [{ id: '', name: 'Seleccione una opción', }, ...this.optionsList];
       this.listFilter = this.optionsList;

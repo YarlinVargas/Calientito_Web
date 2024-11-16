@@ -13,6 +13,10 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { CategoryComponent } from './category/category.component';
+import { GestorUsuariosComponent } from './gestor-usuarios/gestor-usuarios.component';
+import { GestorPanaderiaComponent } from './gestor-panaderia/gestor-panaderia.component';
+import { GestorProductoComponent } from './gestor-producto/gestor-producto.component';
+import { GestorPerfilComponent } from './gestor-perfil/gestor-perfil.component';
 
 const routes: Routes = [
   {
@@ -41,7 +45,7 @@ const routes: Routes = [
     title: 'Panaderias'
   },
   {
-    path: 'products',
+    path: 'products/:id',
     component: ProductsComponent,
     title: 'Productos'
   },
@@ -74,6 +78,26 @@ const routes: Routes = [
     path: 'category',
     component: CategoryComponent,
     title: 'Categoria'
+  },
+  {
+    path: 'gestionUsuario',
+    component: GestorUsuariosComponent,
+    title: 'Gestion de usuarios'
+  },
+  {
+    path: 'gestionPanaderia',
+    component: GestorPanaderiaComponent,
+    title: 'Gestion de panaderias'
+  },
+  {
+    path: 'gestionProducto',
+    component: GestorProductoComponent,
+    title: 'Gestion de productos'
+  },
+  {
+    path: 'gestionPerfil',
+    component: GestorPerfilComponent,
+    title: 'Gestion de perfiles'
   }
 ];
 

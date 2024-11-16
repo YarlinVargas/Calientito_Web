@@ -23,13 +23,13 @@
             <span>About Us</span>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 2">
           <a routerLink="/likes" class="px-4 flex justify-end border-r-4 border-white">
             <span>Favorites</span>
             <fa-icon class="w-5 ml-2" [icon]="faHeart"></fa-icon>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 3 && dataUser.idPerfil != 2">
           <a routerLink="/configuration" class="px-4 flex justify-end border-r-4 border-white">
             <span>Configuration</span>
             <fa-icon class="w-5 ml-2" [icon]="faGears"></fa-icon>
@@ -47,7 +47,7 @@
             <fa-icon class="w-5 ml-2" [icon]="faCircleQuestion"></fa-icon>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 2">
           <a routerLink="/bakeries" class="px-4 flex justify-end border-r-4 border-white">
             <span>Bakeries</span>
             <fa-icon class="w-5 ml-2" [icon]="faStore"></fa-icon>
@@ -59,13 +59,13 @@
             <fa-icon class="w-5 ml-2" [icon]="faBreadSlice"></fa-icon>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 2">
           <a routerLink="/maps" class="px-4 flex justify-end border-r-4 border-white">
             <span>Maps</span>
             <fa-icon class="w-5 ml-2" [icon]="faMapLocationDot"></fa-icon>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 2 && dataUser.idPerfil != 3">
           <a routerLink="/shoppingCart" class="px-4 flex justify-end border-r-4 border-white">
             <span>Shopping Cart</span>
             <fa-icon class="w-5 ml-2" [icon]="faCartShopping"></fa-icon>
@@ -105,42 +105,33 @@
     </header>
 
     <div>
-      <div class="mt-8 grid lg:grid-cols-4 grid-cols-2 gap-10">
+      <div class="mt-8 grid grid-cols-2 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 gap-10">
         <!-- cards go here -->
-        <button (click)="goProducts()">
+        <button (click)="goProducts(1)">
           <div class="bg-white rounded-lg overflow-hidden shadow-md relative hover:shadow-lg">
-            <img src="assets/img/bunuelos.png" alt="bunuelos" class="w-full h-32 sm:h-48 object-cover">
+            <img src="assets/img/panes.jpg" alt="panes" class="w-full h-32 sm:h-48 object-cover">
             <div class="m-4">
-              <span class="font-bold flex justify-center">Bueñuelos</span>
+              <span class="font-bold flex justify-center">Pan tradicional</span>
             </div>
           </div>
         </button>
 
-         <button (click)="goProducts()">
+         <button (click)="goProducts(2)">
           <div class="bg-white rounded-lg overflow-hidden shadow-md relative hover:shadow-lg">
-            <img src="assets/img/almojabana.png" alt="almojabana" class="w-full h-32 sm:h-48 object-cover">
+            <img src="assets/img/panIntegral.jpg" alt="integral" class="w-full h-32 sm:h-48 object-cover">
             <div class="m-4">
-              <span class="font-bold flex justify-center">Almojabana</span>
+              <span class="font-bold flex justify-center">Pan saludable </span>
             </div>
           </div>
         </button>
 
-        <button (click)="goProducts()">
+        <button (click)="goProducts(3)">
           <div class="bg-white rounded-lg overflow-hidden shadow-md relative hover:shadow-lg">
-            <img src="assets/img/croissant.png" alt="croissant" class="w-full h-32 sm:h-48 object-cover">
+            <img src="assets/img/reposteria.png" alt="reposteria" class="w-full h-32 sm:h-48 object-cover">
             <div class="m-4">
-              <span class="font-bold flex justify-center">Croissant</span>
+              <span class="font-bold flex justify-center">Pasteleria</span>
             </div>
            </div>
-        </button>
-
-        <button (click)="goProducts()">
-          <div class="bg-white rounded-lg overflow-hidden shadow-md relative hover:shadow-lg">
-            <img src="assets/img/pandebono.png" alt="croissant" class="w-full h-32 sm:h-48 object-cover">
-            <div class="m-4">
-              <span class="font-bold flex justify-center">Pandebono</span>
-            </div>
-          </div>
         </button>
 
       </div>

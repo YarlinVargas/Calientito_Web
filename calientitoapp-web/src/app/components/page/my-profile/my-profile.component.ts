@@ -23,8 +23,13 @@ export class MyProfileComponent {
    faBars = faBars;
 
    public isOpen:boolean=false;
-
+   dataUser : any;
+   
+   ngOnInit(): void {
+    this.dataUser = JSON.parse(sessionStorage.getItem('auth')!);
+  }
   public OpenMenu(){
     this.isOpen = !this.isOpen;
+
   }
 }

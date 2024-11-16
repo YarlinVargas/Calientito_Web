@@ -24,14 +24,17 @@ export class HelpComponent {
   public isOpen:boolean=false;
   //IMAGEN EMPRESA
   imgEnterprise = "assets/img/logo_calientito.png";
-
+  dataUser : any;
 
   constructor(
 
     private router: Router,
 
   ) {  }
+  public ngOnInit(): void {
+    this.dataUser = JSON.parse(sessionStorage.getItem('auth')!);
 
+  }
   products(){
     this.router.navigateByUrl(`likes`);
   }

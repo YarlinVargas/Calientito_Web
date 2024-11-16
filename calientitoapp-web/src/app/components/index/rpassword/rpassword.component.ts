@@ -162,7 +162,7 @@ export class RpasswordComponent {
     //         if (r?.ok) {
     //           sessionStorage.setItem('auth', JSON.stringify(r.data));
                    // Realizar la petición POST para autenticar el usuario
-    this._usuarioService.authenticateUsuario(data.userName, data.password).subscribe(
+    this._usuarioService.authenticateUsuario(data.idPerfil, data.userName, data.password).subscribe(
       () => {
         console.log('Usuario logueado correctamente');
         this.router.navigateByUrl(`home`);

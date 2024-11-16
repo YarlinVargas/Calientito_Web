@@ -24,17 +24,30 @@ export class ConfigurationComponent {
   public isOpen:boolean=false;
   //IMAGEN EMPRESA
   imgEnterprise = "assets/img/logo_calientito.png";
-
+  dataUser : any;
 
   constructor(
 
     private router: Router,
 
   ) {  }
+  public ngOnInit(): void {
+    this.dataUser = JSON.parse(sessionStorage.getItem('auth')!);
 
-  products(){
-    this.router.navigateByUrl(`likes`);
   }
+  OnGestionUsuarios(){
+    this.router.navigateByUrl(`gestionUsuario`);
+  }
+  OnGestionPanaderias(){
+    this.router.navigateByUrl(`gestionPanaderia`);
+  }
+  OnGestionProductos(){
+    this.router.navigateByUrl(`gestionProducto`);
+  }
+  OnGestionPerfiles(){
+    this.router.navigateByUrl(`gestionPerfil`);
+  }
+
   public OpenMenu(){
     this.isOpen = !this.isOpen;
   }

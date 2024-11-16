@@ -27,6 +27,7 @@ export class MapsComponent implements OnInit, AfterViewInit{
 
     public isOpen:boolean=false;
   map: any;
+  dataUser : any;
   @ViewChild('mapElement') mapElement: any;
 
   constructor(
@@ -35,6 +36,7 @@ export class MapsComponent implements OnInit, AfterViewInit{
 
   ) {  }
   ngOnInit(): void {
+    this.dataUser = JSON.parse(sessionStorage.getItem('auth')!);
     throw new Error('Method not implemented.');
   }
   ngAfterViewInit(): void {
