@@ -46,7 +46,10 @@
           </div>
           <div class="pr-7 pl-7  py-5">
             <form class="space-y-6" [formGroup]="form">
-
+              <div>
+                <app-field-input [parentForm]="form" fieldName="idPerfil" formControlName="idPerfil"
+                  holder="Perfil"></app-field-input>
+              </div>
               <div>
                 <app-field-input [parentForm]="form" fieldName="userName" formControlName="userName"
                   holder="Email"></app-field-input>

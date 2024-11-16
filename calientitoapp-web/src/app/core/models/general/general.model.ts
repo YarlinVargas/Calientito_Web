@@ -21,3 +21,7 @@ export interface ListTipoDocumento {
   id_documento: number | string;
   descripcion: string;
 }
+export interface ListPerfiles {
+  id: number | string;
+  name: string;
+}

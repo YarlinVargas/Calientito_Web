@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faBuilding, faUserGroup, faGear, faBars, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
-import { AuthModel } from 'src/app/core/models/auth/auth.model';
+import { AuthModel,  UserModel } from 'src/app/core/models/auth/auth.model';
 import { GeneralService } from 'src/app/core/services/gen/general.service';
-import { ListModel } from 'src/app/core/models/general/general.model';
+import { ListModel, ListPerfiles } from 'src/app/core/models/general/general.model';
 import { RespService } from 'src/app/core/models/general/resp-service.model';
 import { Dialog } from '@angular/cdk/dialog';
 import { openModals } from 'src/app/core/global/modals/openModal';
@@ -52,7 +52,15 @@ export class PasswordComponent {
     { id: 2, title: 'Empresas', colorT: 'text-teal500', colorB: 'bg-teal500', icon: faBuilding, hover: 'hover:text-teal400 hover:underline', rememberData: false },
     { id: 3, title: 'Usuarios', colorT: 'text-sky700', colorB: 'bg-sky700', icon: faGear, hover: 'hover:text-sky500 hover:underline', rememberData: false }
   ]
+  listPerfiles:ListPerfiles[] = [
+    { id: 1, name: 'Administrador'},
+    { id: 2, name: 'Panaderia' },
+    { id: 3, name: 'Cliente' }
+  ]
+  selectedIndex: any = -1;
+ //Obtener Fecha Actual
 
+    dateNow = '';
 
   constructor(
     private fb: FormBuilder,
@@ -65,20 +73,8 @@ export class PasswordComponent {
     private _usuarioService: UsuarioService
   ) {
     this.initialForm();
-    if (localStorage.getItem('remember') !=null) {
-      const data = this.ValidRemember();
-
-      if (data) {
-        this.openTab = data.id;
-
-        if (this.openTab === data.id) {
-          this.form.controls['idIdentificationType'].setValue(data.idIdentificationType);
-          this.form.controls['userName'].setValue(data.userName);
-        }
-      }
-    }
-
-
+    const date = new Date();
+    this.dateNow = date.toISOString().split('T')[0];
   }
 
   ngOnInit(): void {
@@ -99,100 +95,79 @@ export class PasswordComponent {
     //this.ListFiltersConsult();
   }
 
-  private ListFiltersConsult() {
-    this.spinnerSvc.show();
-    this.genSvc.ListFiltersConsult()
-      .pipe(
-        finalize(() => {
-          this.spinnerSvc.hide();
-        })
-      )
-      .subscribe((resp: RespService[]) => {
-        this.indexDbService.addImage(resp[0].data);
-        this.imgEnterprise =resp[0].data;
-        this.listDocument = resp[1].data;
-      })
-  }
-
   private initialForm() {
     this.form = this.fb.group({
-      idIdentificationType: [''],
+      idPerfil: [''],
+      name: ['', Validators.required],
       userName: ['', Validators.required],
+      lastName: ['', Validators.required],
       password: ['', Validators.required],
-      recaptchaReactive: [null, Validators.required]
+      repeatPassword: ['', Validators.required]
     });
   }
+  public ValidPassword() {
+    if (this.form.value.oldPassword != null && this.form.value.oldPassword != "") {
+      // this.spinnerSvc.show();
+      // this.authSvc.ValidatePassword (
 
-  toggleTabs($tabNumber: number) {
-    this.initialForm();
-    this.openTab = $tabNumber;
+        this.form.value.oldPassword,
 
-    const data = this.ValidRemember();
-    if (data) {
-      if (this.openTab === data.id) {
-        this.form.controls['idIdentificationType'].setValue(data.idIdentificationType);
-        this.form.controls['userName'].setValue(data.userName);
-      }
+      // )
+      // .pipe(
+      //   finalize(() => {
+      //     this.spinnerSvc.hide();
+      //   })
+      // )
+      //   .subscribe(
+      //     {
+      //       next: (_) => {
+              this.form.controls['oldPassword'].setErrors(null);
+              this.form.controls['oldPassword'].markAsTouched();
+            // },
+            // error: (err: any) => {
+              this.form.controls['oldPassword'].setErrors({ oldPassword: true });
+              this.form.controls['oldPassword'].markAsTouched();
+            // }
+          // });
     }
   }
 
-  resolved(captchaResponse: string) {
-  }
+  Register() {
+debugger
 
-  Auth() {
-    //if (this.form.valid) {
-      const data: AuthModel = {...this.form.value};
-    //   data.loginType = this.openTab == 1 ? 3 : this.openTab == 3 ? 1 : this.openTab;
-    //   data.idIdentificationType = data.idIdentificationType == "" || data.idIdentificationType == undefined ? null : data.idIdentificationType;
-
-    //   const object = this.tabs.find(item => item.id === this.openTab);
-    //   this.RememberData(this.openTab, object!.rememberData);
-
-    //   this.spinnerSvc.show();
-    //   this.authSvc.Auth(data).pipe(
-    //     finalize(() => {
-    //       this.spinnerSvc.hide();
-    //     })
-    //   ).subscribe(
-    //     {
-    //       next: (r: RespService) => {
-    //         if (r?.ok) {
-    //           sessionStorage.setItem('auth', JSON.stringify(r.data));
-                   // Realizar la petición POST para autenticar el usuario
-    this._usuarioService.authenticateUsuario(data.userName, data.password).subscribe(
+      const data: UserModel = {
+  name: this.form.value.name,
+  dateBirthday: null,
+  genero: null,
+  email: null,
+  password: this.form.value.password,
+  active : 1,
+  idPerfil: this.form.value.idPerfil,
+  creationDate: new Date(this.dateNow),
+  updateDate: null,
+  lastName: this.form.value.lastName,
+  phoneNumber: null,
+  type_document: null,
+  num_document: null,
+  direccion: null,
+  department: null,
+  city: null,
+  userName: this.form.value.userName,
+};
+    // Realizar la petición POST para registrar el usuario
+    this.authSvc.Register(data).subscribe(
       () => {
-        console.log('Usuario logueado correctamente');
-        this.router.navigateByUrl(`home`);
+        console.log('Usuario registrado correctamente');
+        this.router.navigateByUrl(`login`);
       },
       error => {
-        console.error('Error al loguear el usuario', error);
+        console.error('Error al registrar el usuario', error);
       }
     );
-    //         } else {
-    //           if (r.message == "Autenticación por primera vez") {
-    //             const dialogRef = this.openModal.Open(5, ['Esta es la primera vez que ingresas a nuestro sistema,', 'para continuar es necesario que cambie su contraseña'],
-    //               '¡Bienvenido a Consulta de resultados!', '550px');
 
-    //             dialogRef.componentInstance!.acceptEvent?.subscribe(_ => {
-    //               this.router.navigateByUrl(`changePassword/${data.loginType}/first/${r.data.IdUser}`);
-    //               dialogRef.close();
-    //             });
-    //           }
-    //         }
-    //       },
-    //       error: (err: any) => {
-    //         this.openModal.Open(2, [err.error.message], undefined, '550px');
-    //       }
-    //     });
-    // }else{
-    //    this.form.markAllAsTouched();
-    // }
   }
   volver(){
     this.router.navigateByUrl('/login');
-  }
-  public RecoverPassword() {
-    this.router.navigateByUrl('/recoverPassword');
   }
 
   private ValidRemember() {
@@ -214,13 +189,15 @@ export class PasswordComponent {
   }
 
   public Checked(id: number, $event: any) {
-    this.tabs.forEach(element => {
-      if (element['id'] === id) {
-        element['rememberData'] = $event.checked;
-      } else {
-        element['rememberData'] = false;
-      }
-    });
+   if(id==1){
+    this.form.controls['idPerfil'].setValue(id);
+   }
+   if(id==2){
+    this.form.controls['idPerfil'].setValue(id);
+   }
+   if(id==3){
+    this.form.controls['idPerfil'].setValue(id);
+   }
   }
 
   private RememberData(id: number, checked: boolean) {
@@ -230,4 +207,5 @@ export class PasswordComponent {
       localStorage.removeItem('remember');
     }
   }
+
 }

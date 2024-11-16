@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, tap } from 'rxjs';
-import { AuthModel, ReplyTokens } from '../../models/auth/auth.model';
+import { AuthModel, ReplyTokens, UserModel } from '../../models/auth/auth.model';
 import { RespService } from '../../models/general/resp-service.model';
 import { ConfigService } from '../config/config.service';
 import { PasswordModel } from '../../models/auth/password.model';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  // private apiUrl = `${environment.apiEndpoint}`;
+  apiUrl = environment.apiEndpoint;
   constructor(private http: HttpClient, private config: ConfigService, private router: Router) { }
 
   getAuthToken(): Observable<boolean> {
@@ -22,10 +24,18 @@ export class AuthService {
     return of(valid);
   }
 
-  Auth(data: AuthModel): Observable<RespService> {
-    return this.http.post<RespService>(`${this.config.base}auth`, data)
+  Auth(idPerfil:number,login: string,password:string): Observable<RespService> {
+    const body = {
+      idPerfil:idPerfil,
+      userName: login,
+      password: password
+    };
+    return this.http.post<RespService>(`${this.apiUrl}auth`, body)
   }
 
+  Register(data: UserModel):Observable<RespService>{
+    return this.http.post<RespService>(`${this.config.base}insertUser`, data)
+  }
   Password(data: PasswordModel): Observable<RespService> {
     return this.http.post<RespService>(`${this.config.base}auth/password`, data);
   }

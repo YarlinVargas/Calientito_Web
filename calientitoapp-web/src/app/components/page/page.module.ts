@@ -35,6 +35,15 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { CategoryComponent } from './category/category.component';
+import { GestorUsuariosComponent } from './gestor-usuarios/gestor-usuarios.component';
+import { CreteUpdateUserComponent } from './gestor-usuarios/crete-update-user/crete-update-user.component';
+import { GestorPanaderiaComponent } from './gestor-panaderia/gestor-panaderia.component';
+import { CreateUpdatePanaderiaComponent } from './gestor-panaderia/create-update-panaderia/create-update-panaderia.component';
+import { GestorProductoComponent } from './gestor-producto/gestor-producto.component';
+import { CreateUpdateProductoComponent } from './gestor-producto/create-update-producto/create-update-producto.component';
+import { GestorPerfilComponent } from './gestor-perfil/gestor-perfil.component';
+import { CreateUpdatePerfilComponent } from './gestor-perfil/create-update-perfil/create-update-perfil.component';
+import { AlertasComponent } from './alertas/alertas.component';
 
 
 
@@ -66,6 +75,15 @@ import { CategoryComponent } from './category/category.component';
     MyProfileComponent,
     ConfigurationComponent,
     CategoryComponent,
+    GestorUsuariosComponent,
+    CreteUpdateUserComponent,
+    GestorPanaderiaComponent,
+    CreateUpdatePanaderiaComponent,
+    GestorProductoComponent,
+    CreateUpdateProductoComponent,
+    GestorPerfilComponent,
+    CreateUpdatePerfilComponent,
+    AlertasComponent,
   ],
   imports: [
     CommonModule,

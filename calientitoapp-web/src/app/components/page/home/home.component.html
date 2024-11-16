@@ -23,13 +23,13 @@
             <span>About Us</span>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 2">
           <a routerLink="/likes" class="px-4 flex justify-end border-r-4 border-white">
             <span>Favorites</span>
             <fa-icon class="w-5 ml-2" [icon]="faHeart"></fa-icon>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 3 && dataUser.idPerfil != 2">
           <a routerLink="/configuration" class="px-4 flex justify-end border-r-4 border-white">
             <span>Configuration</span>
             <fa-icon class="w-5 ml-2" [icon]="faGears"></fa-icon>
@@ -47,7 +47,7 @@
             <fa-icon class="w-5 ml-2" [icon]="faCircleQuestion"></fa-icon>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 2">
           <a routerLink="/bakeries" class="px-4 flex justify-end border-r-4 border-white">
             <span>Bakeries</span>
             <fa-icon class="w-5 ml-2" [icon]="faStore"></fa-icon>
@@ -59,13 +59,13 @@
             <fa-icon class="w-5 ml-2" [icon]="faBreadSlice"></fa-icon>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 2">
           <a routerLink="/maps" class="px-4 flex justify-end border-r-4 border-white">
             <span>Maps</span>
             <fa-icon class="w-5 ml-2" [icon]="faMapLocationDot"></fa-icon>
           </a>
         </li>
-        <li class="py-1">
+        <li class="py-1" *ngIf="dataUser.idPerfil != 2 && dataUser.idPerfil != 3">
           <a routerLink="/shoppingCart" class="px-4 flex justify-end border-r-4 border-white">
             <span>Shopping Cart</span>
             <fa-icon class="w-5 ml-2" [icon]="faCartShopping"></fa-icon>
@@ -93,7 +93,7 @@
 
          </div>
 
-         <div class="bg-black rounded over-flow-hidden shadow-md relative hover:shadow-lg h-40 flex justify-center items-center">
+         <div *ngIf="dataUser.idPerfil != 2" class="bg-black rounded over-flow-hidden shadow-md relative hover:shadow-lg h-40 flex justify-center items-center">
           <button (click)="OnFavorites()">
             <div class="m-4">
               <fa-icon class=" text-yellow2 flex justify-center text-5xl" [icon]="faHeart"></fa-icon>
@@ -102,7 +102,7 @@
           </button>
          </div>
 
-         <div class="bg-black rounded over-flow-hidden shadow-md relative hover:shadow-lg h-40 flex justify-center items-center">
+         <div *ngIf="dataUser.idPerfil != 2 && dataUser.idPerfil != 3" class="bg-black rounded over-flow-hidden shadow-md relative hover:shadow-lg h-40 flex justify-center items-center">
           <button (click)="OnConfiguration()">
             <div class="m-4">
               <fa-icon class=" text-yellow2 flex justify-center text-5xl" [icon]="faGears"></fa-icon>
@@ -132,7 +132,7 @@
 
          </div>
 
-         <div class="bg-black rounded over-flow-hidden shadow-md relative hover:shadow-lg h-40 flex justify-center items-center">
+         <div *ngIf="dataUser.idPerfil != 2 " class="bg-black rounded over-flow-hidden shadow-md relative hover:shadow-lg h-40 flex justify-center items-center">
           <button (click)="goToBakeries()">
             <div class="m-4">
               <fa-icon class=" text-yellow2 flex justify-center text-5xl" [icon]="faStore"></fa-icon>
@@ -151,7 +151,7 @@
           </button>
          </div>
 
-         <div class="bg-black rounded over-flow-hidden shadow-md relative hover:shadow-lg h-40 flex justify-center items-center">
+         <div *ngIf="dataUser.idPerfil != 2" class="bg-black rounded over-flow-hidden shadow-md relative hover:shadow-lg h-40 flex justify-center items-center">
          <button (click)="OnMaps()">
           <div class="m-4">
             <fa-icon class=" text-yellow2 flex justify-center text-5xl" [icon]="faMapLocationDot"></fa-icon>
@@ -160,7 +160,7 @@
          </button>
          </div>
 
-         <div class="bg-black rounded-xl over-flow-hidden shadow-md relative hover:shadow-lg h-40 flex justify-center items-center">
+         <div *ngIf="dataUser.idPerfil != 2 && dataUser.idPerfil != 3" class="bg-black rounded-xl over-flow-hidden shadow-md relative hover:shadow-lg h-40 flex justify-center items-center">
           <button (click)="OnShopping()">
             <div class="m-4">
               <fa-icon class="text-yellow2 flex justify-center text-5xl" [icon]="faCartShopping"></fa-icon>
